@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "493172928791",
+    "project_id": "guiltyv3-6fc66",
+    "storage_bucket": "guiltyv3-6fc66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493172928791:android:9f5755b8dd88d4fe270752",
+        "android_client_info": {
+          "package_name": "com.mycompany.guiltyv3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493172928791-pvodibc4735ggk7hnamjakffdeg6ldf0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.guiltyv3",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "493172928791-rfh7saalvtim0lovdtim0mu1luqs697l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA6OzGK1OgiO0hc7ikRhwQlxet3GFeGdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493172928791-rfh7saalvtim0lovdtim0mu1luqs697l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "493172928791-e39goobr6js7g71mso6eo6teaklpj5s8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.guiltyv3"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
