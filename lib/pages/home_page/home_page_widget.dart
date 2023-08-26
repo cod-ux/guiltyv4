@@ -443,7 +443,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             fit: BoxFit.contain,
                             image: Image.network(
                               FFAppState()
-                                  .Imgset[random_data.randomInteger(0, 10)],
+                                  .Imgset[random_data.randomInteger(0, 6)],
                             ).image,
                           ),
                           borderRadius: BorderRadius.circular(17.0),
