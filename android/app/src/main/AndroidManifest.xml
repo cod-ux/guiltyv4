@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="guiltyv3"
+        android:label="guiltyv4"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="guiltyv3" android:host="guiltyv3.com" />
+                <data android:scheme="guiltyv4" android:host="guiltyv4.com" />
             </intent-filter>
 
         </activity>

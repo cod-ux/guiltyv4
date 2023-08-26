@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class Guiltyv3FirebaseUser extends BaseAuthUser {
-  Guiltyv3FirebaseUser(this.user);
+class Guiltyv4FirebaseUser extends BaseAuthUser {
+  Guiltyv4FirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 
@@ -48,17 +48,17 @@ class Guiltyv3FirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      Guiltyv3FirebaseUser(user);
+      Guiltyv4FirebaseUser(user);
 }
 
-Stream<BaseAuthUser> guiltyv3FirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> guiltyv4FirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = Guiltyv3FirebaseUser(user);
+        currentUser = Guiltyv4FirebaseUser(user);
         return currentUser!;
       },
     );
