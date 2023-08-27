@@ -17,7 +17,7 @@ class HomePageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (refresh balance)] action in IconButton widget.
+  // Stores action output result for [Backend Call - API (refresh account)] action in IconButton widget.
   ApiCallResponse? refreshResponse;
 
   /// Initialization and disposal methods.

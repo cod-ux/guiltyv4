@@ -31,16 +31,6 @@ class AccountRecord extends FirestoreRecord {
   String get runway => _runway ?? '';
   bool hasRunway() => _runway != null;
 
-  // "timelefthrs" field.
-  double? _timelefthrs;
-  double get timelefthrs => _timelefthrs ?? 0.0;
-  bool hasTimelefthrs() => _timelefthrs != null;
-
-  // "timeleftday" field.
-  double? _timeleftday;
-  double get timeleftday => _timeleftday ?? 0.0;
-  bool hasTimeleftday() => _timeleftday != null;
-
   // "day_add" field.
   double? _dayAdd;
   double get dayAdd => _dayAdd ?? 0.0;
@@ -66,19 +56,23 @@ class AccountRecord extends FirestoreRecord {
   double get tab => _tab ?? 0.0;
   bool hasTab() => _tab != null;
 
+  // "access_token" field.
+  String? _accessToken;
+  String get accessToken => _accessToken ?? '';
+  bool hasAccessToken() => _accessToken != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
     _dayBalance = castToType<double>(snapshotData['day_balance']);
     _savings = castToType<double>(snapshotData['savings']);
     _runway = snapshotData['runway'] as String?;
-    _timelefthrs = castToType<double>(snapshotData['timelefthrs']);
-    _timeleftday = castToType<double>(snapshotData['timeleftday']);
     _dayAdd = castToType<double>(snapshotData['day_add']);
     _monthlyBudget = castToType<double>(snapshotData['monthly_budget']);
     _accountBalance = castToType<double>(snapshotData['account_balance']);
     _startDate = snapshotData['start_date'] as DateTime?;
     _tab = castToType<double>(snapshotData['tab']);
+    _accessToken = snapshotData['access_token'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -124,26 +118,24 @@ Map<String, dynamic> createAccountRecordData({
   double? dayBalance,
   double? savings,
   String? runway,
-  double? timelefthrs,
-  double? timeleftday,
   double? dayAdd,
   double? monthlyBudget,
   double? accountBalance,
   DateTime? startDate,
   double? tab,
+  String? accessToken,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'day_balance': dayBalance,
       'savings': savings,
       'runway': runway,
-      'timelefthrs': timelefthrs,
-      'timeleftday': timeleftday,
       'day_add': dayAdd,
       'monthly_budget': monthlyBudget,
       'account_balance': accountBalance,
       'start_date': startDate,
       'tab': tab,
+      'access_token': accessToken,
     }.withoutNulls,
   );
 
@@ -158,13 +150,12 @@ class AccountRecordDocumentEquality implements Equality<AccountRecord> {
     return e1?.dayBalance == e2?.dayBalance &&
         e1?.savings == e2?.savings &&
         e1?.runway == e2?.runway &&
-        e1?.timelefthrs == e2?.timelefthrs &&
-        e1?.timeleftday == e2?.timeleftday &&
         e1?.dayAdd == e2?.dayAdd &&
         e1?.monthlyBudget == e2?.monthlyBudget &&
         e1?.accountBalance == e2?.accountBalance &&
         e1?.startDate == e2?.startDate &&
-        e1?.tab == e2?.tab;
+        e1?.tab == e2?.tab &&
+        e1?.accessToken == e2?.accessToken;
   }
 
   @override
@@ -172,13 +163,12 @@ class AccountRecordDocumentEquality implements Equality<AccountRecord> {
         e?.dayBalance,
         e?.savings,
         e?.runway,
-        e?.timelefthrs,
-        e?.timeleftday,
         e?.dayAdd,
         e?.monthlyBudget,
         e?.accountBalance,
         e?.startDate,
-        e?.tab
+        e?.tab,
+        e?.accessToken
       ]);
 
   @override

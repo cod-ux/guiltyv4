@@ -189,7 +189,7 @@ class _StartdateWidgetState extends State<StartdateWidget> {
                           startDate: _model.datePicked,
                         ));
                         _model.refreshResponse =
-                            await ServerCallsGroup.refreshBalanceCall.call(
+                            await ServerCallsGroup.refreshAccountCall.call(
                           userRef: currentUserReference?.id,
                         );
                         if ((_model.refreshResponse?.succeeded ?? true)) {

@@ -248,7 +248,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                               double.parse(_model.textController1.text)),
                         });
                         _model.refreshResponse =
-                            await ServerCallsGroup.refreshBalanceCall.call(
+                            await ServerCallsGroup.refreshAccountCall.call(
                           userRef: currentUserReference?.id,
                         );
                         if ((_model.refreshResponse?.succeeded ?? true)) {
@@ -415,7 +415,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                               -(double.parse(_model.textController2.text))),
                         });
                         _model.refreshResponse2 =
-                            await ServerCallsGroup.refreshBalanceCall.call(
+                            await ServerCallsGroup.refreshAccountCall.call(
                           userRef: currentUserReference?.id,
                         );
                         if ((_model.refreshResponse2?.succeeded ?? true)) {

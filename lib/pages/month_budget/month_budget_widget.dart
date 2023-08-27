@@ -356,7 +356,7 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                               double.tryParse(_model.textController.text),
                         ));
                         _model.refreshResponse =
-                            await ServerCallsGroup.refreshBalanceCall.call(
+                            await ServerCallsGroup.refreshAccountCall.call(
                           userRef: currentUserReference?.id,
                         );
                         if ((_model.refreshResponse?.succeeded ?? true)) {

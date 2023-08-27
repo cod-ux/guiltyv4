@@ -31,6 +31,8 @@ class OnboardingModel extends FlutterFlowModel {
   DateTime? datePicked;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   AccountRecord? acccountResult;
+  // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
+  ApiCallResponse? refreshOutput;
 
   /// Initialization and disposal methods.
 

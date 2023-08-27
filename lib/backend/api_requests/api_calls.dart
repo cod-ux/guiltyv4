@@ -14,19 +14,18 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 class ServerCallsGroup {
   static String baseUrl = 'http://77.68.119.174:5000/';
   static Map<String, String> headers = {};
-  static RefreshBalanceCall refreshBalanceCall = RefreshBalanceCall();
+  static RefreshAccountCall refreshAccountCall = RefreshAccountCall();
   static CreateAccountCall createAccountCall = CreateAccountCall();
-  static RefreshSetupCall refreshSetupCall = RefreshSetupCall();
   static CheckNewPeriodCall checkNewPeriodCall = CheckNewPeriodCall();
 }
 
-class RefreshBalanceCall {
+class RefreshAccountCall {
   Future<ApiCallResponse> call({
     String? userRef = '',
   }) {
     return ApiManager.instance.makeApiCall(
-      callName: 'refresh balance',
-      apiUrl: '${ServerCallsGroup.baseUrl}/refresh_balance',
+      callName: 'refresh account',
+      apiUrl: '${ServerCallsGroup.baseUrl}/refresh_account',
       callType: ApiCallType.GET,
       headers: {
         ...ServerCallsGroup.headers,
@@ -60,26 +59,6 @@ class CreateAccountCall {
       params: {},
       body: body,
       bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class RefreshSetupCall {
-  Future<ApiCallResponse> call({
-    String? userRef = '',
-  }) {
-    return ApiManager.instance.makeApiCall(
-      callName: 'refresh setup',
-      apiUrl: '${ServerCallsGroup.baseUrl}/refresh_setup',
-      callType: ApiCallType.GET,
-      headers: {
-        ...ServerCallsGroup.headers,
-      },
-      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
