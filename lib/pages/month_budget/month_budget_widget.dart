@@ -403,33 +403,54 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                             32.0, 10.0, 32.0, 10.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            await columnAccountRecord!.reference
-                                .update(createAccountRecordData(
-                              monthlyBudget:
-                                  double.tryParse(_model.textController.text),
-                            ));
                             _model.refreshResponse4 =
                                 await ServerCallsGroup.refreshAccountCall.call(
                               userRef: currentUserReference?.id,
                             );
                             if ((_model.refreshResponse4?.succeeded ?? true)) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Update & Refresh Successfull',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                              await columnAccountRecord!.reference
+                                  .update(createAccountRecordData(
+                                monthlyBudget:
+                                    double.tryParse(_model.textController.text),
+                              ));
+                              _model.refreshOutput9ai = await ServerCallsGroup
+                                  .refreshAccountCall
+                                  .call();
+                              if ((_model.refreshOutput9ai?.succeeded ??
+                                  true)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Update & Refresh Successfull',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
                                     ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
                                   ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                              );
-                              setState(() {
-                                _model.textController?.clear();
-                              });
+                                );
+                                setState(() {
+                                  _model.textController?.clear();
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Could not be refreshed',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                              }
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -583,11 +604,6 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                                   );
                                 });
                               }
-
-                              await columnAccountRecord!.reference
-                                  .update(createAccountRecordData(
-                                startDate: _model.datePicked,
-                              ));
                               _model.refreshResponse5 = await ServerCallsGroup
                                   .refreshAccountCall
                                   .call(
@@ -595,20 +611,48 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                               );
                               if ((_model.refreshResponse5?.succeeded ??
                                   true)) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Successfully updated',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
+                                await columnAccountRecord!.reference
+                                    .update(createAccountRecordData(
+                                  startDate: _model.datePicked,
+                                ));
+                                _model.refreshResponse10bi =
+                                    await ServerCallsGroup.refreshAccountCall
+                                        .call(
+                                  userRef: currentUserReference?.id,
                                 );
+                                if ((_model.refreshResponse10bi?.succeeded ??
+                                    true)) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Successfully updated',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Update Unsuccessfull',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

@@ -21,9 +21,13 @@ class MonthBudgetModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
   ApiCallResponse? refreshResponse4;
+  // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
+  ApiCallResponse? refreshOutput9ai;
   DateTime? datePicked;
   // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
   ApiCallResponse? refreshResponse5;
+  // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
+  ApiCallResponse? refreshResponse10bi;
 
   /// Initialization and disposal methods.
 
