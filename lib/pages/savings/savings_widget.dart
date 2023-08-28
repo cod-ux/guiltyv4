@@ -247,11 +247,11 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                           'savings': FieldValue.increment(
                               double.parse(_model.textController1.text)),
                         });
-                        _model.refreshResponse =
+                        _model.refreshResponse6 =
                             await ServerCallsGroup.refreshAccountCall.call(
                           userRef: currentUserReference?.id,
                         );
-                        if ((_model.refreshResponse?.succeeded ?? true)) {
+                        if ((_model.refreshResponse6?.succeeded ?? true)) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(

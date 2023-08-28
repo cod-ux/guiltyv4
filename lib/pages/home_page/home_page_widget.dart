@@ -466,11 +466,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         size: 25.0,
                       ),
                       onPressed: () async {
-                        _model.refreshResponse =
+                        _model.refreshResponse3 =
                             await ServerCallsGroup.refreshAccountCall.call(
                           userRef: currentUserReference?.id,
                         );
-                        if ((_model.refreshResponse?.succeeded ?? true)) {
+                        if ((_model.refreshResponse3?.succeeded ?? true)) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(

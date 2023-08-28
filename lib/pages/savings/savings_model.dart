@@ -18,7 +18,7 @@ class SavingsModel extends FlutterFlowModel {
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
   // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
-  ApiCallResponse? refreshResponse;
+  ApiCallResponse? refreshResponse6;
   // State field(s) for TextField widget.
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;

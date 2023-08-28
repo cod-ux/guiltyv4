@@ -93,7 +93,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xBF000000),
+        backgroundColor: Color(0x89151111),
         body: SafeArea(
           top: true,
           child: Padding(
@@ -281,6 +281,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Start Date',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.white,
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
                             hintText: 'Set budget Start Date below',
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyLarge.override(

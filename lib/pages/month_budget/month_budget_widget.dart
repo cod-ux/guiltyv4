@@ -408,11 +408,11 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                               monthlyBudget:
                                   double.tryParse(_model.textController.text),
                             ));
-                            _model.refreshResponse =
+                            _model.refreshResponse4 =
                                 await ServerCallsGroup.refreshAccountCall.call(
                               userRef: currentUserReference?.id,
                             );
-                            if ((_model.refreshResponse?.succeeded ?? true)) {
+                            if ((_model.refreshResponse4?.succeeded ?? true)) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -588,12 +588,12 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                                   .update(createAccountRecordData(
                                 startDate: _model.datePicked,
                               ));
-                              _model.refreshResponse2 = await ServerCallsGroup
+                              _model.refreshResponse5 = await ServerCallsGroup
                                   .refreshAccountCall
                                   .call(
                                 userRef: currentUserReference?.id,
                               );
-                              if ((_model.refreshResponse2?.succeeded ??
+                              if ((_model.refreshResponse5?.succeeded ??
                                   true)) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

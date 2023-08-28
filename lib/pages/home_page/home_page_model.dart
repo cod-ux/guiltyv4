@@ -18,7 +18,7 @@ class HomePageModel extends FlutterFlowModel {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (refresh account)] action in IconButton widget.
-  ApiCallResponse? refreshResponse;
+  ApiCallResponse? refreshResponse3;
 
   /// Initialization and disposal methods.
 
