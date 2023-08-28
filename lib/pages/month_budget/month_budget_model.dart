@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,9 @@ class MonthBudgetModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
   ApiCallResponse? refreshResponse;
+  DateTime? datePicked;
+  // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
+  ApiCallResponse? refreshResponse2;
 
   /// Initialization and disposal methods.
 

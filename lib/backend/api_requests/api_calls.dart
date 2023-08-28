@@ -31,7 +31,7 @@ class RefreshAccountCall {
         ...ServerCallsGroup.headers,
       },
       params: {
-        'user_ref': userRef,
+        'uid': userRef,
       },
       returnBody: true,
       encodeBodyUtf8: false,
@@ -45,20 +45,16 @@ class CreateAccountCall {
   Future<ApiCallResponse> call({
     String? userRef = '',
   }) {
-    final body = '''
-{
-  "user_ref": "${userRef}"
-}''';
     return ApiManager.instance.makeApiCall(
       callName: 'create account',
       apiUrl: '${ServerCallsGroup.baseUrl}/create_account',
-      callType: ApiCallType.POST,
+      callType: ApiCallType.GET,
       headers: {
         ...ServerCallsGroup.headers,
       },
-      params: {},
-      body: body,
-      bodyType: BodyType.JSON,
+      params: {
+        'uid': userRef,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -78,7 +74,9 @@ class CheckNewPeriodCall {
       headers: {
         ...ServerCallsGroup.headers,
       },
-      params: {},
+      params: {
+        'uid': userRef,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

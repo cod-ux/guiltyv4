@@ -66,6 +66,11 @@ class AccountRecord extends FirestoreRecord {
   double get addedSavings => _addedSavings ?? 0.0;
   bool hasAddedSavings() => _addedSavings != null;
 
+  // "end_date" field.
+  DateTime? _endDate;
+  DateTime? get endDate => _endDate;
+  bool hasEndDate() => _endDate != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -79,6 +84,7 @@ class AccountRecord extends FirestoreRecord {
     _tab = castToType<double>(snapshotData['tab']);
     _accessToken = snapshotData['access_token'] as String?;
     _addedSavings = castToType<double>(snapshotData['added_savings']);
+    _endDate = snapshotData['end_date'] as DateTime?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -131,6 +137,7 @@ Map<String, dynamic> createAccountRecordData({
   double? tab,
   String? accessToken,
   double? addedSavings,
+  DateTime? endDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +151,7 @@ Map<String, dynamic> createAccountRecordData({
       'tab': tab,
       'access_token': accessToken,
       'added_savings': addedSavings,
+      'end_date': endDate,
     }.withoutNulls,
   );
 
@@ -164,7 +172,8 @@ class AccountRecordDocumentEquality implements Equality<AccountRecord> {
         e1?.startDate == e2?.startDate &&
         e1?.tab == e2?.tab &&
         e1?.accessToken == e2?.accessToken &&
-        e1?.addedSavings == e2?.addedSavings;
+        e1?.addedSavings == e2?.addedSavings &&
+        e1?.endDate == e2?.endDate;
   }
 
   @override
@@ -178,7 +187,8 @@ class AccountRecordDocumentEquality implements Equality<AccountRecord> {
         e?.startDate,
         e?.tab,
         e?.accessToken,
-        e?.addedSavings
+        e?.addedSavings,
+        e?.endDate
       ]);
 
   @override
