@@ -85,6 +85,24 @@ class FFAppState extends ChangeNotifier {
     _Today = _value;
     prefs.setString('ff_Today', _value);
   }
+
+  DateTime? _startdatelocal;
+  DateTime? get startdatelocal => _startdatelocal;
+  set startdatelocal(DateTime? _value) {
+    _startdatelocal = _value;
+  }
+
+  double _savingsdiff = 0.0;
+  double get savingsdiff => _savingsdiff;
+  set savingsdiff(double _value) {
+    _savingsdiff = _value;
+  }
+
+  double _budgetdiff = 0.0;
+  double get budgetdiff => _budgetdiff;
+  set budgetdiff(double _value) {
+    _budgetdiff = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
