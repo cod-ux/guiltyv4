@@ -403,23 +403,19 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                             32.0, 10.0, 32.0, 10.0),
                         child: FFButtonWidget(
                           onPressed: () async {
+                            FFAppState().budgetdiff = functions.budgetchange(
+                                columnAccountRecord?.monthlyBudget,
+                                double.tryParse(_model.textController.text));
+
                             await columnAccountRecord!.reference.update({
-                              'monthly_budget': FieldValue.increment(
-                                  functions.budgetchange(
-                                      columnAccountRecord?.monthlyBudget,
-                                      double.tryParse(
-                                          _model.textController.text))),
+                              'monthly_budget':
+                                  FieldValue.increment(FFAppState().budgetdiff),
                             });
                             _model.refreshResponse4 =
                                 await ServerCallsGroup.refreshAccountCall.call(
                               userRef: currentUserReference?.id,
                             );
                             if ((_model.refreshResponse4?.succeeded ?? true)) {
-                              await columnAccountRecord!.reference
-                                  .update(createAccountRecordData(
-                                monthlyBudget:
-                                    double.tryParse(_model.textController.text),
-                              ));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -437,10 +433,7 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                             } else {
                               await columnAccountRecord!.reference.update({
                                 'monthly_budget': FieldValue.increment(
-                                    -(functions.budgetchange(
-                                        columnAccountRecord?.monthlyBudget,
-                                        double.tryParse(
-                                            _model.textController.text)))),
+                                    -(FFAppState().budgetdiff)),
                               });
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -578,6 +571,8 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                               32.0, 10.0, 32.0, 16.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              FFAppState().startdatelocal =
+                                  columnAccountRecord?.startDate;
                               final _datePickedDate = await showDatePicker(
                                 context: context,
                                 initialDate: getCurrentTimestamp,
@@ -594,9 +589,6 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                                   );
                                 });
                               }
-                              _model.startdateDoc =
-                                  await AccountRecord.getDocumentOnce(
-                                      columnAccountRecord!.reference);
 
                               await columnAccountRecord!.reference
                                   .update(createAccountRecordData(
@@ -626,7 +618,7 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                               } else {
                                 await columnAccountRecord!.reference
                                     .update(createAccountRecordData(
-                                  startDate: _model.startdateDoc?.startDate,
+                                  startDate: FFAppState().startdatelocal,
                                 ));
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

@@ -22,8 +22,6 @@ class MonthBudgetModel extends FlutterFlowModel {
   // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
   ApiCallResponse? refreshResponse4;
   DateTime? datePicked;
-  // Stores action output result for [Backend Call - Read Document] action in Button widget.
-  AccountRecord? startdateDoc;
   // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
   ApiCallResponse? refreshResponse5;
 

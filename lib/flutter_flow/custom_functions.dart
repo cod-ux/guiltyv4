@@ -34,9 +34,10 @@ double budgetchange(
   double? initialbudget,
   double? newbudget,
 ) {
-  // reduce newbudget from initialbudget
-  if (initialbudget == null || newbudget == null) {
-    return 0;
+  // difference between initial budget and new budget
+  if (initialbudget != null && newbudget != null) {
+    return newbudget - initialbudget;
+  } else {
+    return 0.0;
   }
-  return initialbudget - newbudget;
 }
