@@ -23,16 +23,20 @@ class RefreshAccountCall {
   Future<ApiCallResponse> call({
     String? userRef = '',
   }) {
+    final body = '''
+{
+  "user_ref": "${userRef}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'refresh account',
       apiUrl: '${ServerCallsGroup.baseUrl}/refresh_account',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         ...ServerCallsGroup.headers,
       },
-      params: {
-        'uid': userRef,
-      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -45,16 +49,20 @@ class CreateAccountCall {
   Future<ApiCallResponse> call({
     String? userRef = '',
   }) {
+    final body = '''
+{
+  "user_ref": "${userRef}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'create account',
       apiUrl: '${ServerCallsGroup.baseUrl}/create_account',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         ...ServerCallsGroup.headers,
       },
-      params: {
-        'uid': userRef,
-      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -67,16 +75,20 @@ class CheckNewPeriodCall {
   Future<ApiCallResponse> call({
     String? userRef = '',
   }) {
+    final body = '''
+{
+  "user_ref": "${userRef}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'check new period',
       apiUrl: '${ServerCallsGroup.baseUrl}/new_period',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         ...ServerCallsGroup.headers,
       },
-      params: {
-        'uid': userRef,
-      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
