@@ -25,6 +25,9 @@ class OnboardingModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TextField widget.
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
   DateTime? datePicked;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   AccountRecord? acccountResult;
@@ -39,6 +42,7 @@ class OnboardingModel extends FlutterFlowModel {
     unfocusNode.dispose();
     textController1?.dispose();
     textController2?.dispose();
+    textController3?.dispose();
   }
 
   /// Action blocks are added here.

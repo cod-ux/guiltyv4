@@ -29,3 +29,14 @@ int? timeleftdays(DateTime? startdate) {
   }
   return null;
 }
+
+double budgetchange(
+  double? initialbudget,
+  double? newbudget,
+) {
+  // reduce newbudget from initialbudget
+  if (initialbudget == null || newbudget == null) {
+    return 0;
+  }
+  return initialbudget - newbudget;
+}

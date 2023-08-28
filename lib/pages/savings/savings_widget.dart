@@ -271,7 +271,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                           });
                         } else {
                           await columnAccountRecord!.reference.update({
-                            'day_balance': FieldValue.increment(
+                            'added_savings': FieldValue.increment(
                                 double.parse(_model.textController1.text)),
                           });
 
@@ -439,7 +439,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                           });
                         } else {
                           await columnAccountRecord!.reference.update({
-                            'day_balance': FieldValue.increment(
+                            'added_savings': FieldValue.increment(
                                 -(double.parse(_model.textController2.text))),
                           });
 
