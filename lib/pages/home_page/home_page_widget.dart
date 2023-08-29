@@ -438,14 +438,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           image: DecorationImage(
-                            fit: BoxFit.fitHeight,
+                            fit: BoxFit.fill,
                             image: Image.network(
-                              FFAppState()
-                                  .Imgset[random_data.randomInteger(0, 6)],
+                              '',
                             ).image,
                           ),
                           borderRadius: BorderRadius.circular(17.0),
                           shape: BoxShape.rectangle,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            FFAppState()
+                                .Imgset[random_data.randomInteger(0, 6)],
+                            width: 280.0,
+                            fit: BoxFit.scaleDown,
+                          ),
                         ),
                       ),
                     ),
