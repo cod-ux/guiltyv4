@@ -92,9 +92,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
-          name: 'month_budget',
-          path: '/monthBudget',
-          builder: (context, params) => MonthBudgetWidget(),
+          name: 'settings',
+          path: '/settings',
+          builder: (context, params) => SettingsWidget(),
         ),
         FFRoute(
           name: 'savings',
