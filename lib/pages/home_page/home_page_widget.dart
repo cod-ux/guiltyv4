@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
@@ -466,15 +467,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         size: 25.0,
                       ),
                       onPressed: () async {
-                        _model.refreshResponse3 =
-                            await ServerCallsGroup.refreshAccountCall.call(
-                          userRef: currentUserReference?.id,
+                        _model.exceptionresult = await actions.refreshexception(
+                          () async {
+                            _model.exceptionresult26 =
+                                await ServerCallsGroup.refreshAccountCall.call(
+                              userRef: currentUserReference?.id,
+                            );
+                          },
                         );
-                        if ((_model.refreshResponse3?.succeeded ?? true)) {
+                        if (_model.exceptionresult!) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Update Successful',
+                                'Succesfully updated',
                                 style: TextStyle(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
@@ -485,27 +490,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                             ),
                           );
-                        } else if (!(_model.refreshResponse3?.succeeded ??
-                            true)) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Update Unsuccessful',
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).error,
-                            ),
-                          );
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Connection refused: Server offline',
+                                'Refresh Unsuccesful',
                                 style: TextStyle(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
