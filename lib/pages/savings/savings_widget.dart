@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -247,11 +248,15 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                           'savings': FieldValue.increment(
                               double.parse(_model.textController1.text)),
                         });
-                        _model.refreshResponse6 =
-                            await ServerCallsGroup.refreshAccountCall.call(
-                          userRef: currentUserReference?.id,
+                        _model.re3296 = await actions.refreshexception(
+                          () async {
+                            _model.apiResulty1t =
+                                await ServerCallsGroup.refreshAccountCall.call(
+                              userRef: currentUserReference?.id,
+                            );
+                          },
                         );
-                        if ((_model.refreshResponse6?.succeeded ?? true)) {
+                        if (_model.re3296!) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -414,11 +419,15 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                           'savings': FieldValue.increment(
                               -(double.parse(_model.textController2.text))),
                         });
-                        _model.refreshResponse2 =
-                            await ServerCallsGroup.refreshAccountCall.call(
-                          userRef: currentUserReference?.id,
+                        _model.re9689 = await actions.refreshexception(
+                          () async {
+                            _model.apiResultdg8 =
+                                await ServerCallsGroup.refreshAccountCall.call(
+                              userRef: currentUserReference?.id,
+                            );
+                          },
                         );
-                        if ((_model.refreshResponse2?.succeeded ?? true)) {
+                        if (_model.re9689!) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(

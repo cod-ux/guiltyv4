@@ -70,11 +70,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
 
     _model.textController1 ??= TextEditingController();
     _model.textController2 ??= TextEditingController();
-    _model.textController3 ??= TextEditingController(
-        text: valueOrDefault<String>(
-      dateTimeFormat('d/M/y', _model.datePicked),
-      'Date Time',
-    ));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -257,87 +252,21 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.9, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 15.0),
+                              0.0, 15.0, 0.0, 10.0),
                           child: Text(
                             'Set Budget Start Date',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: Colors.white,
+                                  color: Color(0xFF4B39EF),
                                   fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
                                 ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                        child: TextFormField(
-                          controller: _model.textController3,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Start Date',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: Colors.white,
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                            hintText: 'Set budget Start Date below',
-                            hintStyle:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 32.0, 20.0, 12.0),
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'Outfit',
-                                color: Colors.white,
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                          validator: _model.textController3Validator
-                              .asValidator(context),
                         ),
                       ),
                       FFButtonWidget(
@@ -359,7 +288,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                             });
                           }
                         },
-                        text: 'Set Start Date',
+                        text: 'Choose date',
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 40.0,

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -411,11 +412,17 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                               'monthly_budget':
                                   FieldValue.increment(FFAppState().budgetdiff),
                             });
-                            _model.refreshResponse4 =
-                                await ServerCallsGroup.refreshAccountCall.call(
-                              userRef: currentUserReference?.id,
+                            _model.customactionoutput32 =
+                                await actions.refreshexception(
+                              () async {
+                                _model.apiResultjbk = await ServerCallsGroup
+                                    .refreshAccountCall
+                                    .call(
+                                  userRef: currentUserReference?.id,
+                                );
+                              },
                             );
-                            if ((_model.refreshResponse4?.succeeded ?? true)) {
+                            if (_model.customactionoutput32!) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -594,13 +601,17 @@ class _MonthBudgetWidgetState extends State<MonthBudgetWidget> {
                                   .update(createAccountRecordData(
                                 startDate: _model.datePicked,
                               ));
-                              _model.refreshResponse5 = await ServerCallsGroup
-                                  .refreshAccountCall
-                                  .call(
-                                userRef: currentUserReference?.id,
+                              _model.refreshexception932 =
+                                  await actions.refreshexception(
+                                () async {
+                                  _model.refreshResponse5 =
+                                      await ServerCallsGroup.refreshAccountCall
+                                          .call(
+                                    userRef: currentUserReference?.id,
+                                  );
+                                },
                               );
-                              if ((_model.refreshResponse5?.succeeded ??
-                                  true)) {
+                              if (_model.refreshexception932!) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(

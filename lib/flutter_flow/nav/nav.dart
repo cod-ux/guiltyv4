@@ -97,19 +97,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => MonthBudgetWidget(),
         ),
         FFRoute(
-          name: 'settings',
-          path: '/settings',
-          builder: (context, params) => SettingsWidget(),
-        ),
-        FFRoute(
           name: 'savings',
           path: '/savings',
           builder: (context, params) => SavingsWidget(),
-        ),
-        FFRoute(
-          name: 'startdate',
-          path: '/startdate',
-          builder: (context, params) => StartdateWidget(),
         ),
         FFRoute(
           name: 'authv',

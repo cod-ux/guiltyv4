@@ -137,7 +137,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 size: 25.0,
                               ),
                               onPressed: () async {
-                                context.pushNamed('settings');
+                                context.pushNamed('month_budget');
                               },
                             ),
                           ),
@@ -259,8 +259,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       alignment:
                                           AlignmentDirectional(0.66, -0.19),
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          context.pushNamed('savings');
                                         },
                                         text: valueOrDefault<String>(
                                           formatNumber(
