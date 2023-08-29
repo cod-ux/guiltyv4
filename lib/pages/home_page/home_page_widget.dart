@@ -438,7 +438,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           image: DecorationImage(
-                            fit: BoxFit.contain,
+                            fit: BoxFit.fitHeight,
                             image: Image.network(
                               FFAppState()
                                   .Imgset[random_data.randomInteger(0, 6)],
