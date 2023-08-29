@@ -85,72 +85,68 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               return Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 330.0,
-                          decoration: BoxDecoration(
-                            color: Color(0x00FFFFFF),
-                          ),
-                          child: Align(
-                            alignment: AlignmentDirectional(0.25, 1.0),
-                            child: GradientText(
-                              'Guilty',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    fontSize: 30.0,
-                                  ),
-                              colors: [
-                                Color(0xFF4B39EF),
-                                Color(0xFF673AB7),
-                                Color(0xFF39D2C0)
-                              ],
-                              gradientDirection: GradientDirection.ltr,
-                              gradientType: GradientType.linear,
-                            ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 330.0,
+                        decoration: BoxDecoration(
+                          color: Color(0x00FFFFFF),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.25, 1.0),
+                          child: GradientText(
+                            'Guilty',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .labelSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 30.0,
+                                ),
+                            colors: [
+                              Color(0xFF4B39EF),
+                              Color(0xFF673AB7),
+                              Color(0xFF39D2C0)
+                            ],
+                            gradientDirection: GradientDirection.ltr,
+                            gradientType: GradientType.linear,
                           ),
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 25.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Color(0x004B39EF),
-                              borderRadius: 20.0,
-                              borderWidth: 1.0,
-                              buttonSize: 40.0,
-                              fillColor: Color(0x004B39EF),
-                              icon: Icon(
-                                Icons.settings,
-                                color: Color(0xFFF7FAFF),
-                                size: 25.0,
-                              ),
-                              onPressed: () async {
-                                context.pushNamed('month_budget');
-                              },
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 25.0, 0.0, 0.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Color(0x004B39EF),
+                            borderRadius: 20.0,
+                            borderWidth: 1.0,
+                            buttonSize: 40.0,
+                            fillColor: Color(0x004B39EF),
+                            icon: Icon(
+                              Icons.settings,
+                              color: Color(0xFFF7FAFF),
+                              size: 25.0,
                             ),
+                            onPressed: () async {
+                              context.pushNamed('month_budget');
+                            },
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, -0.75),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                  Spacer(),
+                  Flexible(
+                    flex: 2,
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, -0.75),
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -158,7 +154,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             alignment: AlignmentDirectional(0.0, -1.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 12.0),
+                                  0.0, 0.0, 0.0, 5.0),
                               child: Text(
                                 valueOrDefault<String>(
                                   formatNumber(
@@ -184,7 +180,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 0.0),
+                                  0.0, 10.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -234,11 +230,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 50.0),
+                  Spacer(),
+                  Flexible(
+                    flex: 2,
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -428,11 +424,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0.05, 0.57),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                  Flexible(
+                    flex: 7,
+                    child: Align(
+                      alignment: AlignmentDirectional(0.05, 0.57),
                       child: Container(
                         decoration: BoxDecoration(
                           color:
@@ -452,12 +447,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFAppState()
                                 .Imgset[random_data.randomInteger(0, 6)],
                             width: 280.0,
-                            fit: BoxFit.scaleDown,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
                   ),
+                  Spacer(),
                   Align(
                     alignment: AlignmentDirectional(0.02, 0.88),
                     child: FlutterFlowIconButton(
@@ -516,6 +512,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       },
                     ),
                   ),
+                  Spacer(),
                 ],
               );
             },
