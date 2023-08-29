@@ -152,78 +152,69 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         children: [
                           Align(
                             alignment: AlignmentDirectional(0.0, -1.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 5.0),
-                              child: Text(
-                                valueOrDefault<String>(
-                                  formatNumber(
-                                    columnAccountRecord?.dayBalance,
-                                    formatType: FormatType.custom,
-                                    currency: '£',
-                                    format: '',
-                                    locale: '',
-                                  ),
-                                  'Null',
+                            child: Text(
+                              valueOrDefault<String>(
+                                formatNumber(
+                                  columnAccountRecord?.dayBalance,
+                                  formatType: FormatType.custom,
+                                  currency: '£',
+                                  format: '',
+                                  locale: '',
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Color(0xFFF7FAFF),
-                                      fontSize: 50.0,
-                                    ),
+                                'Null',
                               ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Color(0xFFF7FAFF),
+                                    fontSize: 50.0,
+                                  ),
                             ),
                           ),
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 10.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 5.0, 0.0),
-                                      child: Text(
-                                        'left today for',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 19.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
                                     child: Text(
-                                      formatNumber(
-                                        functions.timelefthrs(),
-                                        formatType: FormatType.custom,
-                                        format: '# hours',
-                                        locale: '',
-                                      ),
+                                      'left today for',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: Color(0xFF2BF5DE),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                             fontSize: 19.0,
                                           ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Text(
+                                    formatNumber(
+                                      functions.timelefthrs(),
+                                      formatType: FormatType.custom,
+                                      format: '# hours',
+                                      locale: '',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Color(0xFF2BF5DE),
+                                          fontSize: 19.0,
+                                        ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
