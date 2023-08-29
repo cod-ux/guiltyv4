@@ -149,29 +149,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Flexible(
-                            flex: 1,
-                            child: Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
-                              child: Text(
-                                valueOrDefault<String>(
-                                  formatNumber(
-                                    columnAccountRecord?.dayBalance,
-                                    formatType: FormatType.custom,
-                                    currency: '£',
-                                    format: '',
-                                    locale: '',
-                                  ),
-                                  'Null',
+                          Align(
+                            alignment: AlignmentDirectional(0.0, -1.0),
+                            child: Text(
+                              valueOrDefault<String>(
+                                formatNumber(
+                                  columnAccountRecord?.dayBalance,
+                                  formatType: FormatType.custom,
+                                  currency: '£',
+                                  format: '',
+                                  locale: '',
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Color(0xFFF7FAFF),
-                                      fontSize: 50.0,
-                                    ),
+                                'Null',
                               ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Color(0xFFF7FAFF),
+                                    fontSize: 50.0,
+                                  ),
                             ),
                           ),
                           Flexible(
