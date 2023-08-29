@@ -43,6 +43,11 @@ class RefreshAccountCall {
       cache: true,
     );
   }
+
+  dynamic message(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
 }
 
 class CreateAccountCall {
