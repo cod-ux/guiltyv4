@@ -485,11 +485,27 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                             ),
                           );
-                        } else {
+                        } else if (!(_model.refreshResponse3?.succeeded ??
+                            true)) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
                                 'Update Unsuccessful',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).error,
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Connection refused: Server offline',
                                 style: TextStyle(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
