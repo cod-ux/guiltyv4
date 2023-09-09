@@ -5,8 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,20 +13,16 @@ class SavingsModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for TextField widget.
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // Stores action output result for [Custom Action - refreshexception] action in Button widget.
-  bool? re3296;
-  // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
-  ApiCallResponse? apiResulty1t;
-  // State field(s) for TextField widget.
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // Stores action output result for [Custom Action - refreshexception] action in Button widget.
-  bool? re9689;
-  // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
-  ApiCallResponse? apiResultdg8;
+  // State field(s) for Add widget.
+  TextEditingController? addController;
+  String? Function(BuildContext, String?)? addControllerValidator;
+  // Stores action output result for [Backend Call - API (update savings)] action in Button widget.
+  ApiCallResponse? apiResultpmt;
+  // State field(s) for Reduce widget.
+  TextEditingController? reduceController;
+  String? Function(BuildContext, String?)? reduceControllerValidator;
+  // Stores action output result for [Backend Call - API (update savings)] action in Button widget.
+  ApiCallResponse? apiResultpmtCopy;
 
   /// Initialization and disposal methods.
 
@@ -36,8 +30,8 @@ class SavingsModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
-    textController1?.dispose();
-    textController2?.dispose();
+    addController?.dispose();
+    reduceController?.dispose();
   }
 
   /// Action blocks are added here.

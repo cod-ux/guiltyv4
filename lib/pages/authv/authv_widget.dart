@@ -103,7 +103,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
       vsync: this,
       length: 2,
       initialIndex: 0,
-    );
+    )..addListener(() => setState(() {}));
     _model.emailAddressController ??= TextEditingController();
     _model.passwordController1 ??= TextEditingController();
     _model.passwordController2 ??= TextEditingController();
@@ -142,7 +142,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                     color: FlutterFlowTheme.of(context).alternate,
                     borderRadius: BorderRadius.circular(16.0),
                   ),
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 72.0),
@@ -154,7 +154,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 170.0, 0.0, 0.0),
                   child: SingleChildScrollView(
@@ -218,7 +218,6 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                         ),
                                       ],
                                       controller: _model.tabBarController,
-                                      onTap: (value) => setState(() {}),
                                     ),
                                   ),
                                   Expanded(
@@ -227,7 +226,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                              AlignmentDirectional(0.00, -1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -669,7 +668,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -774,7 +773,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                              AlignmentDirectional(0.00, -1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -1075,7 +1074,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -1158,7 +1157,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional

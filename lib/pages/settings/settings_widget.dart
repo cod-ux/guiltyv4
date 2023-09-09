@@ -5,9 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,7 +84,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 0.0),
@@ -116,7 +114,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 5.0),
@@ -230,11 +228,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ],
                   ),
+                  Spacer(),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Text(
                           'Month Budget',
                           style: FlutterFlowTheme.of(context)
@@ -248,7 +247,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Text(
                           formatNumber(
                             columnAccountRecord!.monthlyBudget,
@@ -267,7 +266,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               3.0, 0.0, 0.0, 0.0),
@@ -367,25 +366,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             32.0, 10.0, 32.0, 10.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            FFAppState().budgetdiff = functions.budgetchange(
-                                columnAccountRecord?.monthlyBudget,
-                                double.tryParse(_model.textController.text));
-
-                            await columnAccountRecord!.reference.update({
-                              'monthly_budget':
-                                  FieldValue.increment(FFAppState().budgetdiff),
-                            });
-                            _model.customactionoutput32 =
-                                await actions.refreshexception(
-                              () async {
-                                _model.apiResultjbk = await ServerCallsGroup
-                                    .refreshAccountCall
-                                    .call(
-                                  userRef: currentUserReference?.id,
-                                );
-                              },
+                            _model.apiResultdsn = await ServerCallsGroup
+                                .updateMonthlyBudgetCall
+                                .call(
+                              userRef: currentUserReference?.id,
+                              mb: double.tryParse(_model.textController.text),
                             );
-                            if (_model.customactionoutput32!) {
+                            if ((_model.apiResultdsn?.succeeded ?? true)) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -400,15 +387,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       FlutterFlowTheme.of(context).secondary,
                                 ),
                               );
-                            } else {
-                              await columnAccountRecord!.reference.update({
-                                'monthly_budget': FieldValue.increment(
-                                    -(FFAppState().budgetdiff)),
+                              setState(() {
+                                _model.textController?.clear();
                               });
+                            } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'Update Unsuccessfull',
+                                    'Update unsseccesful',
                                     style: TextStyle(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
@@ -445,12 +431,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ],
                   ),
+                  Spacer(),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 5.0, 0.0, 0.0),
@@ -469,7 +456,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
@@ -507,8 +494,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             32.0, 10.0, 32.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            FFAppState().startdatelocal =
-                                columnAccountRecord?.startDate;
                             final _datePickedDate = await showDatePicker(
                               context: context,
                               initialDate: getCurrentTimestamp,
@@ -525,22 +510,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 );
                               });
                             }
-
-                            await columnAccountRecord!.reference
-                                .update(createAccountRecordData(
-                              startDate: _model.datePicked,
-                            ));
-                            _model.refreshexception932 =
-                                await actions.refreshexception(
-                              () async {
-                                _model.refreshResponse5 = await ServerCallsGroup
-                                    .refreshAccountCall
-                                    .call(
-                                  userRef: currentUserReference?.id,
-                                );
-                              },
+                            _model.apiResultner =
+                                await ServerCallsGroup.updateStartDateCall.call(
+                              userRef: currentUserReference?.id,
+                              startDate: _model.datePicked?.toString(),
                             );
-                            if (_model.refreshexception932!) {
+                            if ((_model.apiResultner?.succeeded ?? true)) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -556,14 +531,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 ),
                               );
                             } else {
-                              await columnAccountRecord!.reference
-                                  .update(createAccountRecordData(
-                                startDate: FFAppState().startdatelocal,
-                              ));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'Update Unsuccessfull',
+                                    'Update unsuccessful',
                                     style: TextStyle(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
@@ -601,7 +572,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  Spacer(flex: 9),
                 ],
               );
             },

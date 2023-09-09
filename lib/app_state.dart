@@ -5,13 +5,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
-  static final FFAppState _instance = FFAppState._internal();
+  static FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
   }
 
   FFAppState._internal();
+
+  static void reset() {
+    _instance = FFAppState._internal();
+  }
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
@@ -72,6 +76,11 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_Imgset', _Imgset);
   }
 
+  void insertAtIndexInImgset(int _index, String _value) {
+    _Imgset.insert(_index, _value);
+    prefs.setStringList('ff_Imgset', _Imgset);
+  }
+
   String _Thismonth = 'This Month';
   String get Thismonth => _Thismonth;
   set Thismonth(String _value) {
@@ -84,24 +93,6 @@ class FFAppState extends ChangeNotifier {
   set Today(String _value) {
     _Today = _value;
     prefs.setString('ff_Today', _value);
-  }
-
-  DateTime? _startdatelocal;
-  DateTime? get startdatelocal => _startdatelocal;
-  set startdatelocal(DateTime? _value) {
-    _startdatelocal = _value;
-  }
-
-  double _savingsdiff = 0;
-  double get savingsdiff => _savingsdiff;
-  set savingsdiff(double _value) {
-    _savingsdiff = _value;
-  }
-
-  double _budgetdiff = 0;
-  double get budgetdiff => _budgetdiff;
-  set budgetdiff(double _value) {
-    _budgetdiff = _value;
   }
 }
 

@@ -5,8 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,8 +28,8 @@ class _SavingsWidgetState extends State<SavingsWidget> {
     super.initState();
     _model = createModel(context, () => SavingsModel());
 
-    _model.textController1 ??= TextEditingController(text: '0');
-    _model.textController2 ??= TextEditingController(text: '0');
+    _model.addController ??= TextEditingController(text: '0');
+    _model.reduceController ??= TextEditingController(text: '0');
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -86,7 +84,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(
                           20.0, 20.0, 20.0, 40.0),
@@ -113,7 +111,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 16.0, 20.0),
@@ -131,7 +129,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
@@ -180,7 +178,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 10.0, 8.0, 8.0),
                               child: TextFormField(
-                                controller: _model.textController1,
+                                controller: _model.addController,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -225,7 +223,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                                 keyboardType:
                                     const TextInputType.numberWithOptions(
                                         decimal: true),
-                                validator: _model.textController1Validator
+                                validator: _model.addControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -239,24 +237,13 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                         EdgeInsetsDirectional.fromSTEB(32.0, 16.0, 32.0, 16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await columnAccountRecord!.reference.update({
-                          'added_savings': FieldValue.increment(
-                              -(double.parse(_model.textController1.text))),
-                        });
-
-                        await columnAccountRecord!.reference.update({
-                          'savings': FieldValue.increment(
-                              double.parse(_model.textController1.text)),
-                        });
-                        _model.re3296 = await actions.refreshexception(
-                          () async {
-                            _model.apiResulty1t =
-                                await ServerCallsGroup.refreshAccountCall.call(
-                              userRef: currentUserReference?.id,
-                            );
-                          },
+                        _model.apiResultpmt =
+                            await ServerCallsGroup.updateSavingsCall.call(
+                          userRef: currentUserReference?.id,
+                          action: 'add',
+                          change: double.tryParse(_model.addController.text),
                         );
-                        if (_model.re3296!) {
+                        if ((_model.apiResultpmt?.succeeded ?? true)) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -272,25 +259,13 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                             ),
                           );
                           setState(() {
-                            _model.textController1?.clear();
+                            _model.addController?.clear();
                           });
                         } else {
-                          await columnAccountRecord!.reference.update({
-                            'added_savings': FieldValue.increment(
-                                double.parse(_model.textController1.text)),
-                          });
-
-                          await columnAccountRecord!.reference.update({
-                            'savings': FieldValue.increment(
-                                -(double.parse(_model.textController1.text))),
-                          });
-                          setState(() {
-                            _model.textController1?.clear();
-                          });
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Update Unsuccessfull',
+                                'Update unsuccessful',
                                 style: TextStyle(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
@@ -351,7 +326,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 10.0, 8.0, 8.0),
                               child: TextFormField(
-                                controller: _model.textController2,
+                                controller: _model.reduceController,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -396,7 +371,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                                 keyboardType:
                                     const TextInputType.numberWithOptions(
                                         decimal: true),
-                                validator: _model.textController2Validator
+                                validator: _model.reduceControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -410,24 +385,13 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                         EdgeInsetsDirectional.fromSTEB(32.0, 16.0, 32.0, 16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await columnAccountRecord!.reference.update({
-                          'added_savings': FieldValue.increment(
-                              double.parse(_model.textController2.text)),
-                        });
-
-                        await columnAccountRecord!.reference.update({
-                          'savings': FieldValue.increment(
-                              -(double.parse(_model.textController2.text))),
-                        });
-                        _model.re9689 = await actions.refreshexception(
-                          () async {
-                            _model.apiResultdg8 =
-                                await ServerCallsGroup.refreshAccountCall.call(
-                              userRef: currentUserReference?.id,
-                            );
-                          },
+                        _model.apiResultpmtCopy =
+                            await ServerCallsGroup.updateSavingsCall.call(
+                          userRef: currentUserReference?.id,
+                          action: 'reduce',
+                          change: double.tryParse(_model.reduceController.text),
                         );
-                        if (_model.re9689!) {
+                        if ((_model.apiResultpmt?.succeeded ?? true)) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -443,27 +407,13 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                             ),
                           );
                           setState(() {
-                            _model.textController2?.clear();
-                            _model.textController1?.clear();
+                            _model.reduceController?.clear();
                           });
                         } else {
-                          await columnAccountRecord!.reference.update({
-                            'added_savings': FieldValue.increment(
-                                -(double.parse(_model.textController2.text))),
-                          });
-
-                          await columnAccountRecord!.reference.update({
-                            'savings': FieldValue.increment(
-                                double.parse(_model.textController2.text)),
-                          });
-                          setState(() {
-                            _model.textController2?.clear();
-                            _model.textController1?.clear();
-                          });
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Update Unsuccessfull',
+                                'Update unsuccessful',
                                 style: TextStyle(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,

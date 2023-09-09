@@ -95,7 +95,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           color: Color(0x00FFFFFF),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.25, 1.0),
+                          alignment: AlignmentDirectional(0.25, 1.00),
                           child: GradientText(
                             'Guilty',
                             textAlign: TextAlign.center,
@@ -117,7 +117,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 0.0),
@@ -141,14 +141,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ],
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.75),
+                    alignment: AlignmentDirectional(0.00, -0.75),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: AlignmentDirectional(0.00, -1.00),
                           child: Text(
                             valueOrDefault<String>(
                               formatNumber(
@@ -170,13 +170,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 5.0, 0.0),
@@ -194,7 +194,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   formatNumber(
                                     functions.timelefthrs(),
@@ -221,7 +221,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Flexible(
                     flex: 2,
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.00, 0.00),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -297,10 +297,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               BorderRadius.circular(12.0),
                                         ),
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.00, 0.00),
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.00, 0.00),
                                           child: Text(
                                             'Savings',
                                             style: FlutterFlowTheme.of(context)
@@ -321,7 +321,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-0.7, -0.18),
+                            alignment: AlignmentDirectional(-0.70, -0.18),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 15.0, 0.0),
@@ -384,10 +384,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               BorderRadius.circular(12.0),
                                         ),
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.00, 0.00),
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.00, 0.00),
                                           child: Text(
                                             'Runway',
                                             style: FlutterFlowTheme.of(context)

@@ -16,14 +16,17 @@ class ServerCallsGroup {
   static Map<String, String> headers = {};
   static RefreshAccountCall refreshAccountCall = RefreshAccountCall();
   static CreateAccountCall createAccountCall = CreateAccountCall();
-  static CheckNewPeriodCall checkNewPeriodCall = CheckNewPeriodCall();
+  static UpdateMonthlyBudgetCall updateMonthlyBudgetCall =
+      UpdateMonthlyBudgetCall();
+  static UpdateStartDateCall updateStartDateCall = UpdateStartDateCall();
+  static UpdateSavingsCall updateSavingsCall = UpdateSavingsCall();
 }
 
 class RefreshAccountCall {
   Future<ApiCallResponse> call({
     String? userRef = '',
   }) {
-    final body = '''
+    final ffApiRequestBody = '''
 {
   "user_ref": "${userRef}"
 }''';
@@ -35,7 +38,7 @@ class RefreshAccountCall {
         ...ServerCallsGroup.headers,
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -54,7 +57,7 @@ class CreateAccountCall {
   Future<ApiCallResponse> call({
     String? userRef = '',
   }) {
-    final body = '''
+    final ffApiRequestBody = '''
 {
   "user_ref": "${userRef}"
 }''';
@@ -66,7 +69,7 @@ class CreateAccountCall {
         ...ServerCallsGroup.headers,
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -76,23 +79,83 @@ class CreateAccountCall {
   }
 }
 
-class CheckNewPeriodCall {
+class UpdateMonthlyBudgetCall {
   Future<ApiCallResponse> call({
+    double? mb,
     String? userRef = '',
   }) {
-    final body = '''
+    final ffApiRequestBody = '''
 {
-  "user_ref": "${userRef}"
+  "user_ref": "${userRef}",
+  “mb": ${mb}
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'check new period',
-      apiUrl: '${ServerCallsGroup.baseUrl}/new_period',
+      callName: 'update monthly budget',
+      apiUrl: '${ServerCallsGroup.baseUrl}/update_mb',
       callType: ApiCallType.POST,
       headers: {
         ...ServerCallsGroup.headers,
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UpdateStartDateCall {
+  Future<ApiCallResponse> call({
+    String? startDate = '',
+    String? userRef = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "user_ref": "${userRef}",
+  "start_date": "${startDate}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'update start date',
+      apiUrl: '${ServerCallsGroup.baseUrl}/update_start_date',
+      callType: ApiCallType.POST,
+      headers: {
+        ...ServerCallsGroup.headers,
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UpdateSavingsCall {
+  Future<ApiCallResponse> call({
+    double? change,
+    String? action = '',
+    String? userRef = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "user_ref": "${userRef}",
+  "action": "${action}",
+  "change": ${change}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'update savings',
+      apiUrl: '${ServerCallsGroup.baseUrl}/update_savings',
+      callType: ApiCallType.POST,
+      headers: {
+        ...ServerCallsGroup.headers,
+      },
+      params: {},
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
