@@ -81,13 +81,13 @@ class CreateAccountCall {
 
 class UpdateMonthlyBudgetCall {
   Future<ApiCallResponse> call({
-    double? mb,
+    double? newMb,
     String? userRef = '',
   }) {
     final ffApiRequestBody = '''
 {
   "user_ref": "${userRef}",
-  “mb": ${mb}
+  “mb": ${newMb}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'update monthly budget',
