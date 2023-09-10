@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -68,134 +69,155 @@ class _ReboardingWidgetState extends State<ReboardingWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 100.0),
-                          child: Text(
-                            'Reset start date & tab',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: Color(0xFF452EF8),
-                                  fontSize: 35.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: Color(0xFFE9E9E9),
+                        borderRadius: 20.0,
+                        borderWidth: 1.0,
+                        buttonSize: 40.0,
+                        fillColor: Color(0xFFE9E9E9),
+                        icon: Icon(
+                          Icons.arrow_back_sharp,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 24.0,
                         ),
+                        onPressed: () async {
+                          context.pushNamed('settings');
+                        },
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            final _datePickedDate = await showDatePicker(
-                              context: context,
-                              initialDate: getCurrentTimestamp,
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime(2050),
-                            );
-
-                            if (_datePickedDate != null) {
-                              setState(() {
-                                _model.datePicked = DateTime(
-                                  _datePickedDate.year,
-                                  _datePickedDate.month,
-                                  _datePickedDate.day,
-                                );
-                              });
-                            }
-                          },
-                          text: 'Set budget start date',
-                          options: FFButtonOptions(
-                            height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0x89151111),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Color(0xFFE9E9E9),
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Color(0xFFE9E9E9),
-                              width: 2.2,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: _model.retabController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Tab',
-                          hintText: 'Amount spent till now from start date',
-                          hintStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          contentPadding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 32.0, 20.0, 12.0),
-                        ),
-                        style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
-                                  fontFamily: 'Outfit',
-                                  color: Colors.white,
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                        validator: _model.retabControllerValidator
-                            .asValidator(context),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 Spacer(),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                        child: Text(
+                          'Reset start date & tab',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: 'Outfit',
+                                color: Color(0xFF452EF8),
+                                fontSize: 35.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          final _datePickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: getCurrentTimestamp,
+                            firstDate: DateTime(1900),
+                            lastDate: DateTime(2050),
+                          );
+
+                          if (_datePickedDate != null) {
+                            setState(() {
+                              _model.datePicked = DateTime(
+                                _datePickedDate.year,
+                                _datePickedDate.month,
+                                _datePickedDate.day,
+                              );
+                            });
+                          }
+                        },
+                        text: 'Set budget start date',
+                        options: FFButtonOptions(
+                          height: 50.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0x89151111),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Color(0xFFE9E9E9),
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Color(0xFFE9E9E9),
+                            width: 2.2,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ),
+                    TextFormField(
+                      controller: _model.retabController,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Tab',
+                        hintText: 'Amount spent till now from start date',
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 32.0, 20.0, 12.0),
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Outfit',
+                                color: Colors.white,
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                      validator:
+                          _model.retabControllerValidator.asValidator(context),
+                    ),
+                  ],
+                ),
+                Spacer(flex: 15),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
                   child: FFButtonWidget(
