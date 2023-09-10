@@ -110,6 +110,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'onboarding',
           path: '/onboarding',
           builder: (context, params) => OnboardingWidget(),
+        ),
+        FFRoute(
+          name: 'reboarding',
+          path: '/reboarding',
+          builder: (context, params) => ReboardingWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

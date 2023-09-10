@@ -105,12 +105,14 @@ class UpdateMonthlyBudgetCall {
 class UpdateStartDateCall {
   Future<ApiCallResponse> call({
     String? startDate = '',
+    double? tab,
     String? userRef = '',
   }) {
     final ffApiRequestBody = '''
 {
   "user_ref": "${userRef}",
-  "start_date": "${startDate}"
+  "start_date": "${startDate}",
+  "tab": ${tab}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'update start date',

@@ -98,7 +98,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -120,7 +120,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         alignment: AlignmentDirectional(-1.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 15.0, 0.0, 100.0),
+                              0.0, 15.0, 0.0, 80.0),
                           child: Text(
                             'The Guilty Project',
                             style: FlutterFlowTheme.of(context)
@@ -193,14 +193,61 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         ),
                       ),
                       Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 10.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            final _datePickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: getCurrentTimestamp,
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2050),
+                            );
+
+                            if (_datePickedDate != null) {
+                              setState(() {
+                                _model.datePicked = DateTime(
+                                  _datePickedDate.year,
+                                  _datePickedDate.month,
+                                  _datePickedDate.day,
+                                );
+                              });
+                            }
+                          },
+                          text: 'Set budget start date',
+                          options: FFButtonOptions(
+                            height: 50.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0x89151111),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Color(0xFFE9E9E9),
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Color(0xFFE9E9E9),
+                              width: 2.2,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                      Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: TextFormField(
                           controller: _model.textController2,
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Tab',
-                            hintText: 'Enter your tab name',
+                            hintText: 'Amount spent till now from start date',
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
                                       fontFamily: 'Readex Pro',
@@ -251,69 +298,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               .asValidator(context),
                         ),
                       ),
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 15.0, 0.0, 10.0),
-                          child: Text(
-                            'Set Budget Start Date',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Color(0xFF4B39EF),
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          final _datePickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: getCurrentTimestamp,
-                            firstDate: DateTime(1900),
-                            lastDate: DateTime(2050),
-                          );
-
-                          if (_datePickedDate != null) {
-                            setState(() {
-                              _model.datePicked = DateTime(
-                                _datePickedDate.year,
-                                _datePickedDate.month,
-                                _datePickedDate.day,
-                              );
-                            });
-                          }
-                        },
-                        text: 'Choose date',
-                        options: FFButtonOptions(
-                          width: 150.0,
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                              ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
                     ],
                   ),
                 ),
+                Spacer(),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
                   child: FFButtonWidget(

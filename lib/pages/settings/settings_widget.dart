@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -444,9 +443,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 0.0),
+                              0.0, 0.0, 0.0, 20.0),
                           child: Text(
-                            'Start Date',
+                            'Reset start date/tab',
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
@@ -461,20 +460,41 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                       Align(
                         alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 5.0),
-                          child: Text(
-                            dateTimeFormat(
-                                'yMMMd', columnAccountRecord!.startDate!),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  fontSize: 30.0,
-                                ),
-                          ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: Text(
+                                'Current Start date: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: Text(
+                                dateTimeFormat(
+                                    'yMMMd', columnAccountRecord!.startDate!),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      fontSize: 30.0,
+                                    ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Row(
@@ -493,67 +513,58 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           ),
                         ],
                       ),
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: Text(
+                                'Current Tab: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: Text(
+                                formatNumber(
+                                  columnAccountRecord!.tab,
+                                  formatType: FormatType.custom,
+                                  currency: '£',
+                                  format: '',
+                                  locale: '',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      fontSize: 30.0,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 10.0, 32.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final _datePickedDate = await showDatePicker(
-                              context: context,
-                              initialDate: getCurrentTimestamp,
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime(2050),
-                            );
-
-                            if (_datePickedDate != null) {
-                              setState(() {
-                                _model.datePicked = DateTime(
-                                  _datePickedDate.year,
-                                  _datePickedDate.month,
-                                  _datePickedDate.day,
-                                );
-                              });
-                            }
-                            _model.apiResultner =
-                                await ServerCallsGroup.updateStartDateCall.call(
-                              userRef: currentUserReference?.id,
-                              startDate: _model.datePicked?.toString(),
-                            );
-                            if ((_model.apiResultner?.succeeded ?? true)) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Successfully updated',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                              );
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Update unsuccessful',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).error,
-                                ),
-                              );
-                            }
-
-                            setState(() {});
+                            context.pushNamed('reboarding');
                           },
-                          text: 'Change Start Date',
+                          text: 'Reset budget',
                           options: FFButtonOptions(
                             width: 190.0,
                             height: 35.0,

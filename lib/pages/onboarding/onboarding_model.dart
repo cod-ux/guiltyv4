@@ -22,10 +22,10 @@ class OnboardingModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
+  DateTime? datePicked;
   // State field(s) for TextField widget.
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  DateTime? datePicked;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   AccountRecord? acccountResult;
   // Stores action output result for [Backend Call - API (refresh account)] action in Button widget.
