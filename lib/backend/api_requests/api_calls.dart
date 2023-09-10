@@ -12,7 +12,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start Server calls Group Code
 
 class ServerCallsGroup {
-  static String baseUrl = 'http://77.68.119.174';
+  static String baseUrl = 'http://77.68.119.174:5000';
   static Map<String, String> headers = {};
   static RefreshAccountCall refreshAccountCall = RefreshAccountCall();
   static CreateAccountCall createAccountCall = CreateAccountCall();
