@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -367,18 +366,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             32.0, 10.0, 32.0, 10.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            _model.bluhbluhh = await actions.refreshexception(
-                              () async {
-                                _model.apiResultwyz = await ServerCallsGroup
-                                    .updateMonthlyBudgetCall
-                                    .call(
-                                  userRef: currentUserReference?.id,
-                                  newMb: double.tryParse(
-                                      _model.textController.text),
-                                );
-                              },
+                            _model.apiResultwyz = await ServerCallsGroup
+                                .updateMonthlyBudgetCall
+                                .call(
+                              userRef: currentUserReference?.id,
+                              newMb:
+                                  double.tryParse(_model.textController.text),
                             );
-                            if (_model.bluhbluhh!) {
+                            if ((_model.apiResultwyz?.succeeded ?? true)) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
