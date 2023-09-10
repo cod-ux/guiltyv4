@@ -395,7 +395,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'Update unsseccesful',
+                                    getJsonField(
+                                      (_model.apiResultdsn?.jsonBody ?? ''),
+                                      r'''$.error''',
+                                    ).toString(),
                                     style: TextStyle(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,

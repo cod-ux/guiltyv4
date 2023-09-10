@@ -87,7 +87,7 @@ class UpdateMonthlyBudgetCall {
     final ffApiRequestBody = '''
 {
   "user_ref": "${userRef}",
-  “mb": ${newMb}
+  “new_mb”: ${newMb}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'update monthly budget',
