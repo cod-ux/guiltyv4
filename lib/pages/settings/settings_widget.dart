@@ -370,8 +370,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 .updateMonthlyBudgetCall
                                 .call(
                               userRef: currentUserReference?.id,
-                              newMb:
-                                  double.tryParse(_model.textController.text),
+                              newMb: _model.textController.text,
                             );
                             if ((_model.apiResultdsn?.succeeded ?? true)) {
                               ScaffoldMessenger.of(context).showSnackBar(

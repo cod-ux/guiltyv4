@@ -76,7 +76,7 @@ class CreateAccountCall {
 
 class UpdateMonthlyBudgetCall {
   Future<ApiCallResponse> call({
-    double? newMb,
+    String? newMb = '',
     String? userRef = '',
   }) {
     final ffApiRequestBody = '''
