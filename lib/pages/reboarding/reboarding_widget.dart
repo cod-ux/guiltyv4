@@ -141,7 +141,8 @@ class _ReboardingWidgetState extends State<ReboardingWidget> {
                             onPressed: () async {
                               final _datePickedDate = await showDatePicker(
                                 context: context,
-                                initialDate: getCurrentTimestamp,
+                                initialDate:
+                                    reboardingAccountRecord!.startDate!,
                                 firstDate: DateTime(1900),
                                 lastDate: DateTime(2050),
                               );
