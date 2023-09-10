@@ -12,10 +12,8 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start Server calls Group Code
 
 class ServerCallsGroup {
-  static String baseUrl = 'http://77.68.119.174:5000';
-  static Map<String, String> headers = {
-    'Content-Type': 'application/json',
-  };
+  static String baseUrl = 'http://77.68.119.174';
+  static Map<String, String> headers = {};
   static RefreshAccountCall refreshAccountCall = RefreshAccountCall();
   static CreateAccountCall createAccountCall = CreateAccountCall();
   static UpdateMonthlyBudgetCall updateMonthlyBudgetCall =
@@ -48,11 +46,6 @@ class RefreshAccountCall {
       cache: true,
     );
   }
-
-  dynamic message(dynamic response) => getJsonField(
-        response,
-        r'''$.message''',
-      );
 }
 
 class CreateAccountCall {
