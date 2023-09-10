@@ -395,10 +395,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    getJsonField(
-                                      (_model.apiResultdsn?.jsonBody ?? ''),
-                                      r'''$.error''',
-                                    ).toString(),
+                                    (_model.apiResultdsn?.jsonBody ?? '')
+                                        .toString(),
                                     style: TextStyle(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
