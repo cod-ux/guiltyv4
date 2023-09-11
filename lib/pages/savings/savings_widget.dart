@@ -103,7 +103,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                               size: 24.0,
                             ),
                             onPressed: () async {
-                              context.pushNamed('HomePage');
+                              context.pushNamed('Home');
                             },
                           ),
                         ],

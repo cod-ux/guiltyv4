@@ -1104,7 +1104,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                                           }
 
                                                           context.goNamedAuth(
-                                                              'HomePage',
+                                                              'Home',
                                                               context.mounted);
                                                         },
                                                         text: 'Sign In',
@@ -1179,7 +1179,7 @@ class _AuthvWidgetState extends State<AuthvWidget>
                                                           }
 
                                                           context.goNamedAuth(
-                                                              'HomePage',
+                                                              'Home',
                                                               context.mounted);
                                                         },
                                                         text:

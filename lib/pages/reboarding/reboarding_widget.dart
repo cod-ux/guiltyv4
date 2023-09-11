@@ -273,7 +273,7 @@ class _ReboardingWidgetState extends State<ReboardingWidget> {
                               _model.retabController?.clear();
                             });
 
-                            context.pushNamed('HomePage');
+                            context.pushNamed('Home');
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

@@ -78,18 +78,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : AuthvWidget(),
+          appStateNotifier.loggedIn ? HomeWidget() : AuthvWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : AuthvWidget(),
+              appStateNotifier.loggedIn ? HomeWidget() : AuthvWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
+          name: 'Home',
+          path: '/home',
+          builder: (context, params) => HomeWidget(),
         ),
         FFRoute(
           name: 'settings',
@@ -115,6 +115,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'reboarding',
           path: '/reboarding',
           builder: (context, params) => ReboardingWidget(),
+        ),
+        FFRoute(
+          name: 'summary',
+          path: '/summary',
+          builder: (context, params) => SummaryWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

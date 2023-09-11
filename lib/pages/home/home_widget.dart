@@ -11,25 +11,25 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'home_model.dart';
+export 'home_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+class HomeWidget extends StatefulWidget {
+  const HomeWidget({Key? key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
-  late HomePageModel _model;
+class _HomeWidgetState extends State<HomeWidget> {
+  late HomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => HomeModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -138,6 +138,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ],
                   ),
+                  Spacer(),
                   Align(
                     alignment: AlignmentDirectional(0.00, -0.75),
                     child: Column(
@@ -287,7 +288,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       alignment:
                                           AlignmentDirectional(-0.81, -0.83),
                                       child: Container(
-                                        width: 83.0,
+                                        width: 87.0,
                                         height: 20.0,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF4B39EF),
@@ -332,8 +333,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       alignment:
                                           AlignmentDirectional(0.69, -0.19),
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          context.pushNamed('summary');
                                         },
                                         text: valueOrDefault<String>(
                                           columnAccountRecord?.runway,
@@ -374,7 +375,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       alignment:
                                           AlignmentDirectional(-0.81, -0.83),
                                       child: Container(
-                                        width: 83.0,
+                                        width: 87.0,
                                         height: 20.0,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF4B39EF),
@@ -387,7 +388,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           alignment:
                                               AlignmentDirectional(0.00, 0.00),
                                           child: Text(
-                                            'Runway',
+                                            'Status',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

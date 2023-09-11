@@ -41,3 +41,11 @@ double budgetchange(
     return 0.0;
   }
 }
+
+double budgetleft(
+  double budget,
+  double tab,
+) {
+  // returns the difference between budget and tab
+  return budget - tab;
+}

@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -82,159 +81,58 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               return Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          FlutterFlowIconButton(
-                            borderColor: Color(0x004B39EF),
+                  Container(
+                    width: double.infinity,
+                    height: 60.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Stack(
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              11.0, 11.0, 11.0, 11.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.white,
                             borderRadius: 20.0,
                             borderWidth: 1.0,
                             buttonSize: 40.0,
-                            fillColor: FlutterFlowTheme.of(context).accent1,
+                            fillColor: Colors.white,
                             icon: Icon(
-                              Icons.arrow_back_outlined,
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              Icons.arrow_back_rounded,
+                              color: Color(0xFF4B39EF),
                               size: 24.0,
                             ),
                             onPressed: () async {
-                              context.pushNamed('HomePage');
+                              context.pushNamed('Home');
                             },
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 5.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Account  Balance: ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 15.0,
-                                      ),
-                                ),
-                              ),
-                              Text(
-                                formatNumber(
-                                  columnAccountRecord!.accountBalance,
-                                  formatType: FormatType.custom,
-                                  currency: '£',
-                                  format: '',
-                                  locale: '',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 15.0,
-                                    ),
-                              ),
-                            ],
-                          ),
                         ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Daily Addition: ',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 15.0,
-                                  ),
-                            ),
-                          ),
-                          Text(
-                            formatNumber(
-                              columnAccountRecord!.dayAdd,
-                              formatType: FormatType.custom,
-                              currency: '£',
-                              format: '',
-                              locale: '',
-                            ),
+                        Align(
+                          alignment: AlignmentDirectional(0.04, 0.09),
+                          child: Text(
+                            'Settings',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  fontSize: 15.0,
+                                  color: Color(0xD1000000),
+                                  fontSize: 27.5,
                                 ),
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                'End date: ',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 15.0,
-                                    ),
-                              ),
-                            ),
-                            Text(
-                              dateTimeFormat(
-                                  'yMMMd', columnAccountRecord!.endDate!),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 15.0,
-                                  ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                '(30 days from start date)',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
-                            ),
-                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  Spacer(),
+                  Spacer(flex: 2),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
                         alignment: AlignmentDirectional(0.00, 0.00),
                         child: Text(
-                          'Month Budget',
+                          ' Month Budget',
+                          textAlign: TextAlign.start,
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
@@ -247,49 +145,30 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                       Align(
                         alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Text(
-                          formatNumber(
-                            columnAccountRecord!.monthlyBudget,
-                            formatType: FormatType.custom,
-                            currency: '£',
-                            format: '',
-                            locale: '',
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                fontFamily: 'Outfit',
-                                color: FlutterFlowTheme.of(context).primary,
-                                fontSize: 30.0,
-                              ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              3.0, 0.0, 0.0, 0.0),
+                              5.0, 5.0, 5.0, 5.0),
                           child: Text(
                             formatNumber(
-                              functions
-                                  .timeleftdays(columnAccountRecord?.startDate),
+                              columnAccountRecord!.monthlyBudget,
                               formatType: FormatType.custom,
-                              format: 'Ends in # days',
+                              currency: '£',
+                              format: '',
                               locale: '',
                             ),
                             style: FlutterFlowTheme.of(context)
-                                .bodyMedium
+                                .headlineMedium
                                 .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Color(0xB04B39EF),
-                                  fontSize: 15.0,
+                                  fontFamily: 'Outfit',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 30.0,
                                 ),
                           ),
                         ),
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Text(
                           'Set the budget amount for the month',
                           style: FlutterFlowTheme.of(context)
@@ -414,7 +293,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           },
                           text: 'Save',
                           options: FFButtonOptions(
-                            width: 150.0,
+                            width: MediaQuery.sizeOf(context).width * 0.35,
                             height: 32.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
@@ -434,7 +313,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  Spacer(flex: 3),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -445,7 +324,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: Text(
-                            'Reset start date/tab',
+                            'Start date & Tab',
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
@@ -468,7 +347,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: Text(
-                                'Current Start date: ',
+                                ' Start date: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -523,7 +402,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: Text(
-                                'Current Tab: ',
+                                'Tab: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -564,9 +443,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           onPressed: () async {
                             context.pushNamed('reboarding');
                           },
-                          text: 'Reset budget',
+                          text: 'Reset ',
                           options: FFButtonOptions(
-                            width: 190.0,
+                            width: MediaQuery.sizeOf(context).width * 0.35,
                             height: 35.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
@@ -598,6 +477,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     },
                     text: 'Logout',
                     options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 0.35,
                       height: 40.0,
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),

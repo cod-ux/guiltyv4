@@ -340,7 +340,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                             ),
                           );
 
-                          context.pushNamed('HomePage');
+                          context.pushNamed('Home');
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
