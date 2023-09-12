@@ -28,7 +28,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     super.initState();
     _model = createModel(context, () => SettingsModel());
 
-    _model.textController ??= TextEditingController();
+    _model.textController1 ??= TextEditingController();
+    _model.excTransactionController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -83,7 +84,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: 60.0,
+                    height: 56.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
@@ -124,61 +125,403 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ],
                     ),
                   ),
-                  Spacer(flex: 2),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Text(
-                          ' Month Budget',
-                          textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                fontFamily: 'Outfit',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 25.0,
-                                decoration: TextDecoration.underline,
-                              ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 5.0, 5.0, 5.0),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            formatNumber(
-                              columnAccountRecord!.monthlyBudget,
-                              formatType: FormatType.custom,
-                              currency: '£',
-                              format: '',
-                              locale: '',
-                            ),
+                            ' Month Budget',
+                            textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
                                   fontFamily: 'Outfit',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  fontSize: 30.0,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontSize: 20.0,
+                                  decoration: TextDecoration.underline,
+                                ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 5.0, 5.0, 5.0),
+                            child: Text(
+                              formatNumber(
+                                columnAccountRecord!.monthlyBudget,
+                                formatType: FormatType.custom,
+                                currency: '£',
+                                format: '',
+                                locale: '',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 17.0,
+                                  ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: Text(
+                            'Change  budget amount for the month',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 15.0,
+                                ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 200.0,
+                              decoration: BoxDecoration(),
+                              child: TextFormField(
+                                controller: _model.textController1,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  hintText: 'New budget amount',
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                keyboardType:
+                                    const TextInputType.numberWithOptions(
+                                        decimal: true),
+                                validator: _model.textController1Validator
+                                    .asValidator(context),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              32.0, 10.0, 32.0, 10.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              _model.apiResultwyz = await ServerCallsGroup
+                                  .updateMonthlyBudgetCall
+                                  .call(
+                                userRef: currentUserReference?.id,
+                                newMb: double.tryParse(
+                                    _model.textController1.text),
+                              );
+                              if ((_model.apiResultwyz?.succeeded ?? true)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Successfully updated',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                                setState(() {
+                                  _model.textController1?.clear();
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      getJsonField(
+                                        (_model.apiResultwyz?.jsonBody ?? ''),
+                                        r'''$.error''',
+                                      ).toString(),
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                              }
+
+                              setState(() {});
+                            },
+                            text: 'Save',
+                            options: FFButtonOptions(
+                              width: MediaQuery.sizeOf(context).width * 0.27,
+                              height: 27.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    fontSize: 15.0,
+                                  ),
+                              elevation: 2.0,
+                              borderRadius: BorderRadius.circular(24.0),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 20.0),
+                          child: Text(
+                            'Start date & Tab',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontSize: 20.0,
+                                  decoration: TextDecoration.underline,
                                 ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: Text(
-                          'Set the budget amount for the month',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 16.0,
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: Text(
+                                ' Start date: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                               ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: Text(
+                                dateTimeFormat(
+                                    'yMMMd', columnAccountRecord!.startDate!),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      fontSize: 17.0,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: Text(
+                                'Tab: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: Text(
+                                formatNumber(
+                                  columnAccountRecord!.tab,
+                                  formatType: FormatType.custom,
+                                  currency: '£',
+                                  format: '',
+                                  locale: '',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      fontSize: 17.0,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            32.0, 10.0, 32.0, 16.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            context.pushNamed('reboarding');
+                          },
+                          text: 'Reset ',
+                          options: FFButtonOptions(
+                            width: MediaQuery.sizeOf(context).width * 0.27,
+                            height: 27.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0xFF4023FF),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 15.0,
+                                ),
+                            elevation: 2.0,
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 20.0),
+                          child: Text(
+                            'Exclude Transactions',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontSize: 20.0,
+                                  decoration: TextDecoration.underline,
+                                ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: Text(
+                                'Last change to tab: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: Text(
+                                formatNumber(
+                                  columnAccountRecord!.lastChangeToTab,
+                                  formatType: FormatType.custom,
+                                  currency: '£',
+                                  format: '',
+                                  locale: '',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      fontSize: 17.0,
+                                    ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Row(
@@ -189,14 +532,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             width: 200.0,
                             decoration: BoxDecoration(),
                             child: TextFormField(
-                              controller: _model.textController,
+                              controller: _model.excTransactionController,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'Change Month Budget',
                                 labelStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
-                                hintText: 'Change budget',
+                                hintText: 'Transaction amount',
                                 hintStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 enabledBorder: UnderlineInputBorder(
@@ -233,7 +575,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               keyboardType:
                                   const TextInputType.numberWithOptions(
                                       decimal: true),
-                              validator: _model.textControllerValidator
+                              validator: _model
+                                  .excTransactionControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -241,17 +584,17 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            32.0, 10.0, 32.0, 10.0),
+                            32.0, 10.0, 32.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            _model.apiResultwyz = await ServerCallsGroup
-                                .updateMonthlyBudgetCall
+                            _model.apiResultwyzblah = await ServerCallsGroup
+                                .excludeTransactionCall
                                 .call(
                               userRef: currentUserReference?.id,
-                              newMb:
-                                  double.tryParse(_model.textController.text),
+                              transactionAmount: double.tryParse(
+                                  _model.excTransactionController.text),
                             );
-                            if ((_model.apiResultwyz?.succeeded ?? true)) {
+                            if ((_model.apiResultwyzblah?.succeeded ?? true)) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -267,14 +610,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 ),
                               );
                               setState(() {
-                                _model.textController?.clear();
+                                _model.excTransactionController?.clear();
                               });
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
                                     getJsonField(
-                                      (_model.apiResultwyz?.jsonBody ?? ''),
+                                      (_model.apiResultwyzblah?.jsonBody ?? ''),
                                       r'''$.error''',
                                     ).toString(),
                                     style: TextStyle(
@@ -291,162 +634,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
                             setState(() {});
                           },
-                          text: 'Save',
-                          options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 0.35,
-                            height: 32.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                ),
-                            elevation: 2.0,
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Spacer(flex: 3),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
-                          child: Text(
-                            'Start date & Tab',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 25.0,
-                                  decoration: TextDecoration.underline,
-                                ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: Text(
-                                ' Start date: ',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 5.0),
-                              child: Text(
-                                dateTimeFormat(
-                                    'yMMMd', columnAccountRecord!.startDate!),
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 30.0,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 200.0,
-                                decoration: BoxDecoration(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: Text(
-                                'Tab: ',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 5.0),
-                              child: Text(
-                                formatNumber(
-                                  columnAccountRecord!.tab,
-                                  formatType: FormatType.custom,
-                                  currency: '£',
-                                  format: '',
-                                  locale: '',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 30.0,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            32.0, 10.0, 32.0, 16.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            context.pushNamed('reboarding');
-                          },
                           text: 'Reset ',
                           options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 0.35,
-                            height: 35.0,
+                            width: MediaQuery.sizeOf(context).width * 0.27,
+                            height: 27.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -457,7 +648,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
-                                  fontSize: 16.0,
+                                  fontSize: 15.0,
                                 ),
                             elevation: 2.0,
                             borderRadius: BorderRadius.circular(24.0),
@@ -466,7 +657,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ],
                   ),
-                  Spacer(flex: 9),
+                  Spacer(flex: 3),
                   FFButtonWidget(
                     onPressed: () async {
                       GoRouter.of(context).prepareAuthEvent();
@@ -497,7 +688,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  Spacer(flex: 2),
+                  Spacer(),
                 ],
               );
             },

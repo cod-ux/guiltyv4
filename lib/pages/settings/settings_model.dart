@@ -14,10 +14,15 @@ class SettingsModel extends FlutterFlowModel {
 
   final unfocusNode = FocusNode();
   // State field(s) for TextField widget.
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  TextEditingController? textController1;
+  String? Function(BuildContext, String?)? textController1Validator;
   // Stores action output result for [Backend Call - API (update monthly budget)] action in Button widget.
   ApiCallResponse? apiResultwyz;
+  // State field(s) for Exc_transaction widget.
+  TextEditingController? excTransactionController;
+  String? Function(BuildContext, String?)? excTransactionControllerValidator;
+  // Stores action output result for [Backend Call - API (exclude transaction)] action in Button widget.
+  ApiCallResponse? apiResultwyzblah;
 
   /// Initialization and disposal methods.
 
@@ -25,7 +30,8 @@ class SettingsModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
-    textController?.dispose();
+    textController1?.dispose();
+    excTransactionController?.dispose();
   }
 
   /// Action blocks are added here.

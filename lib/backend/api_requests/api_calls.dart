@@ -20,6 +20,8 @@ class ServerCallsGroup {
       UpdateMonthlyBudgetCall();
   static UpdateStartDateCall updateStartDateCall = UpdateStartDateCall();
   static UpdateSavingsCall updateSavingsCall = UpdateSavingsCall();
+  static ExcludeTransactionCall excludeTransactionCall =
+      ExcludeTransactionCall();
 }
 
 class RefreshAccountCall {
@@ -147,6 +149,34 @@ class UpdateSavingsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'update savings',
       apiUrl: '${ServerCallsGroup.baseUrl}/update_savings',
+      callType: ApiCallType.POST,
+      headers: {
+        ...ServerCallsGroup.headers,
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ExcludeTransactionCall {
+  Future<ApiCallResponse> call({
+    double? transactionAmount,
+    String? userRef = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "user_ref": "${userRef}",
+  "transaction_amount": ${transactionAmount}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'exclude transaction',
+      apiUrl: '${ServerCallsGroup.baseUrl}/exclude_transaction',
       callType: ApiCallType.POST,
       headers: {
         ...ServerCallsGroup.headers,
