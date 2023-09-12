@@ -133,41 +133,41 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       children: [
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            ' Month Budget',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 20.0,
-                                  decoration: TextDecoration.underline,
-                                ),
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 5.0, 5.0, 5.0),
+                                0.0, 0.0, 0.0, 5.0),
                             child: Text(
-                              formatNumber(
-                                columnAccountRecord!.monthlyBudget,
-                                formatType: FormatType.custom,
-                                currency: '£',
-                                format: '',
-                                locale: '',
-                              ),
+                              ' Month Budget',
+                              textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
                                     fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    fontSize: 17.0,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 20.0,
+                                    decoration: TextDecoration.underline,
                                   ),
                             ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: Text(
+                            formatNumber(
+                              columnAccountRecord!.monthlyBudget,
+                              formatType: FormatType.custom,
+                              currency: '£',
+                              format: '',
+                              locale: '',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 17.0,
+                                ),
                           ),
                         ),
                         Padding(
@@ -181,7 +181,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  fontSize: 15.0,
+                                  fontSize: 12.0,
                                 ),
                           ),
                         ),
@@ -319,7 +319,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ],
                     ),
                   ),
-                  Spacer(),
+                  Spacer(flex: 2),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -328,7 +328,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
+                              0.0, 0.0, 0.0, 5.0),
                           child: Text(
                             'Start date & Tab',
                             style: FlutterFlowTheme.of(context)
@@ -456,7 +456,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  Spacer(flex: 2),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -465,7 +465,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
+                              0.0, 0.0, 0.0, 5.0),
                           child: Text(
                             'Exclude Transactions',
                             style: FlutterFlowTheme.of(context)
@@ -490,7 +490,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: Text(
-                                'Last change to tab: ',
+                                'Last spend: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
