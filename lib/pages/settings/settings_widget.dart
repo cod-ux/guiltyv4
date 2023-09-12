@@ -134,8 +134,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             },
                             text: 'Logout',
                             options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 0.2,
-                              height: 25.0,
+                              width: MediaQuery.sizeOf(context).width * 0.235,
+                              height: 23.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -146,7 +146,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     color: Colors.white,
-                                    fontSize: 12.0,
+                                    fontSize: 5.0,
+                                    fontWeight: FontWeight.normal,
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(
