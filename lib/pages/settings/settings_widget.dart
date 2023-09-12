@@ -526,7 +526,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: Text(
-                                'Last spend: ',
+                                'Last transaction detected: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
