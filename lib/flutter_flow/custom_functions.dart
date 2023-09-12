@@ -49,3 +49,13 @@ double budgetleft(
   // returns the difference between budget and tab
   return budget - tab;
 }
+
+double? numberformat(double? inputnumber) {
+  // takes an inputnumber which can be negative or positive and returns it as a currency of £.
+  if (inputnumber != null) {
+    final formatter =
+        NumberFormat.currency(locale: 'en_GB', symbol: '£', decimalDigits: 1);
+    return double.parse(formatter.format(inputnumber));
+  }
+  return null;
+}

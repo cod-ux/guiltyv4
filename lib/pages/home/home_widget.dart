@@ -150,16 +150,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, -1.00),
                           child: Text(
-                            valueOrDefault<String>(
-                              formatNumber(
-                                columnAccountRecord?.dayBalance,
-                                formatType: FormatType.custom,
-                                currency: '',
-                                format: '¤ #,##0.0',
-                                locale: 'en_GB',
-                              ),
-                              'Null',
-                            ),
+                            functions
+                                .numberformat(columnAccountRecord?.dayBalance)
+                                .toString(),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
