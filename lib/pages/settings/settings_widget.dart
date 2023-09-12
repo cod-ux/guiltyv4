@@ -333,8 +333,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             },
                             text: 'Save',
                             options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 0.27,
-                              height: 27.0,
+                              width: MediaQuery.sizeOf(context).width * 0.22,
+                              height: 24.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -345,7 +345,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     color: Colors.white,
-                                    fontSize: 15.0,
+                                    fontSize: 12.0,
                                   ),
                               elevation: 2.0,
                               borderRadius: BorderRadius.circular(24.0),
@@ -471,8 +471,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           },
                           text: 'Reset ',
                           options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 0.27,
-                            height: 27.0,
+                            width: MediaQuery.sizeOf(context).width * 0.22,
+                            height: 24.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -483,7 +483,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
-                                  fontSize: 15.0,
+                                  fontSize: 12.0,
                                 ),
                             elevation: 2.0,
                             borderRadius: BorderRadius.circular(24.0),
@@ -670,10 +670,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
                             setState(() {});
                           },
-                          text: 'Reset ',
+                          text: 'Exclude ',
                           options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 0.27,
-                            height: 27.0,
+                            width: MediaQuery.sizeOf(context).width * 0.22,
+                            height: 24.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -684,7 +684,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
-                                  fontSize: 15.0,
+                                  fontSize: 12.0,
                                 ),
                             elevation: 2.0,
                             borderRadius: BorderRadius.circular(24.0),
