@@ -178,7 +178,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     columnAccountRecord?.dayBalance,
                                     formatType: FormatType.custom,
                                     currency: '£',
-                                    format: '',
+                                    format: '#,##0.00',
                                     locale: '',
                                   ),
                                   'Null',

@@ -316,6 +316,37 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
+                                'Total Spend: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 16.5,
+                                    ),
+                              ),
+                              Text(
+                                formatNumber(
+                                  summaryAccountRecord!.tab,
+                                  formatType: FormatType.custom,
+                                  currency: '£',
+                                  format: '',
+                                  locale: '',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Color(0xFF361EC5),
+                                      fontSize: 15.0,
+                                    ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
                                 'Start date: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
