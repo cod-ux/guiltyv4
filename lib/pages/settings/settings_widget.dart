@@ -122,6 +122,41 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 ),
                           ),
                         ),
+                        Align(
+                          alignment: AlignmentDirectional(0.93, -0.06),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              GoRouter.of(context).prepareAuthEvent();
+                              await authManager.signOut();
+                              GoRouter.of(context).clearRedirectLocation();
+
+                              context.goNamedAuth('authv', context.mounted);
+                            },
+                            text: 'Logout',
+                            options: FFButtonOptions(
+                              width: MediaQuery.sizeOf(context).width * 0.25,
+                              height: 25.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    fontSize: 12.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -172,7 +207,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
+                              0.0, 2.0, 0.0, 0.0),
                           child: Text(
                             'Change  budget amount for the month',
                             style: FlutterFlowTheme.of(context)
@@ -658,36 +693,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     ],
                   ),
                   Spacer(flex: 3),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      GoRouter.of(context).prepareAuthEvent();
-                      await authManager.signOut();
-                      GoRouter.of(context).clearRedirectLocation();
-
-                      context.goNamedAuth('authv', context.mounted);
-                    },
-                    text: 'Logout',
-                    options: FFButtonOptions(
-                      width: MediaQuery.sizeOf(context).width * 0.35,
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
                   Spacer(),
                 ],
               );
