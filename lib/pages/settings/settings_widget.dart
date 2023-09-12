@@ -134,7 +134,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             },
                             text: 'Logout',
                             options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 0.235,
+                              width: MediaQuery.sizeOf(context).width * 0.25,
                               height: 23.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
