@@ -151,9 +151,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                           alignment: AlignmentDirectional(0.00, -1.00),
                           child: Text(
                             valueOrDefault<String>(
-                              functions
-                                  .numberformat(columnAccountRecord?.dayBalance)
-                                  ?.toString(),
+                              functions.numberformat(
+                                  columnAccountRecord?.dayBalance),
                               'Null',
                             ),
                             style: FlutterFlowTheme.of(context)
