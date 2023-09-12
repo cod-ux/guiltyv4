@@ -134,7 +134,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             },
                             text: 'Logout',
                             options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 0.25,
+                              width: MediaQuery.sizeOf(context).width * 0.2,
                               height: 25.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
@@ -365,7 +365,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
                           child: Text(
-                            'Start date & Tab',
+                            'Start date & Amount Spent',
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
@@ -427,7 +427,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: Text(
-                                'Tab: ',
+                                'Amount Spent: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
