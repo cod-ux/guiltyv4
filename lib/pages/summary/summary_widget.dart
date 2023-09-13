@@ -325,12 +325,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                     ),
                               ),
                               Text(
-                                formatNumber(
-                                  summaryAccountRecord!.tab,
-                                  formatType: FormatType.custom,
-                                  currency: '£',
-                                  format: '',
-                                  locale: '',
+                                valueOrDefault<String>(
+                                  functions
+                                      .numberformat(summaryAccountRecord?.tab),
+                                  'null',
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

@@ -239,16 +239,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         onPressed: () async {
                                           context.pushNamed('savings');
                                         },
-                                        text: valueOrDefault<String>(
-                                          formatNumber(
-                                            columnAccountRecord?.savings,
-                                            formatType: FormatType.custom,
-                                            currency: '£',
-                                            format: '',
-                                            locale: '',
-                                          ),
-                                          'Null',
-                                        ),
+                                        text: functions.numberformat(
+                                            columnAccountRecord?.savings)!,
                                         options: FFButtonOptions(
                                           width: 150.0,
                                           height: 103.0,

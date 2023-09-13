@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -190,12 +191,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            formatNumber(
-                              columnAccountRecord!.monthlyBudget,
-                              formatType: FormatType.custom,
-                              currency: '£',
-                              format: '',
-                              locale: '',
+                            valueOrDefault<String>(
+                              functions.numberformat(
+                                  columnAccountRecord?.monthlyBudget),
+                              'null',
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
@@ -442,12 +441,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 5.0),
                               child: Text(
-                                formatNumber(
-                                  columnAccountRecord!.tab,
-                                  formatType: FormatType.custom,
-                                  currency: '£',
-                                  format: '',
-                                  locale: '',
+                                valueOrDefault<String>(
+                                  functions
+                                      .numberformat(columnAccountRecord?.tab),
+                                  'null',
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
@@ -540,12 +537,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 5.0),
                               child: Text(
-                                formatNumber(
-                                  columnAccountRecord!.lastChangeToTab,
-                                  formatType: FormatType.custom,
-                                  currency: '£',
-                                  format: '',
-                                  locale: '',
+                                valueOrDefault<String>(
+                                  functions.numberformat(
+                                      columnAccountRecord?.lastChangeToTab),
+                                  'null',
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
