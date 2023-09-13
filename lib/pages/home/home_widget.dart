@@ -231,7 +231,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   15.0, 0.0, 15.0, 0.0),
                               child: Container(
                                 width: 150.0,
-                                height: 100.0,
+                                height: MediaQuery.sizeOf(context).height * 0.4,
                                 child: Stack(
                                   children: [
                                     Align(
@@ -245,7 +245,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             columnAccountRecord?.savings)!,
                                         options: FFButtonOptions(
                                           width: 150.0,
-                                          height: 103.0,
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              1.0,
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
@@ -332,7 +334,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         ),
                                         options: FFButtonOptions(
                                           width: 150.0,
-                                          height: 103.0,
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              1.0,
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
