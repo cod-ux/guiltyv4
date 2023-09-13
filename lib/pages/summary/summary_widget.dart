@@ -316,6 +316,35 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
+                                'Daily Add: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 16.5,
+                                    ),
+                              ),
+                              Text(
+                                valueOrDefault<String>(
+                                  functions.numberformat(
+                                      summaryAccountRecord?.dayAdd),
+                                  'null',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Color(0xFF361EC5),
+                                      fontSize: 15.0,
+                                    ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
                                 'Total Spend: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -345,7 +374,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                'Start date: ',
+                                'Start Date: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -371,7 +400,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                'End date: ',
+                                'End Date: ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
