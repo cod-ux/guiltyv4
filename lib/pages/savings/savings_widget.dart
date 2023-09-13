@@ -88,7 +88,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                     alignment: AlignmentDirectional(0.00, -1.00),
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(
-                          20.0, 20.0, 20.0, 40.0),
+                          20.0, 20.0, 20.0, 10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -115,7 +115,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                     alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 16.0, 20.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                       child: Text(
                         'Savings',
                         style: FlutterFlowTheme.of(context)
@@ -123,7 +123,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                             .override(
                               fontFamily: 'Outfit',
                               color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 40.0,
+                              fontSize: 30.0,
                               decoration: TextDecoration.underline,
                             ),
                       ),
@@ -144,14 +144,13 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                             .override(
                               fontFamily: 'Outfit',
                               color: FlutterFlowTheme.of(context).primary,
-                              fontSize: 65.0,
+                              fontSize: 25.0,
                             ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                     child: Text(
                       'Add money in savings . . .',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -172,58 +171,53 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                           Container(
                             width: 200.0,
                             decoration: BoxDecoration(),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 10.0, 8.0, 8.0),
-                              child: TextFormField(
-                                controller: _model.addController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'Add savings',
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  hintText: 'Change budget',
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                            child: TextFormField(
+                              controller: _model.addController,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Add savings',
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                hintText: 'Change budget',
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 2.0,
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        decimal: true),
-                                validator: _model.addControllerValidator
-                                    .asValidator(context),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedErrorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
                               ),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      decimal: true),
+                              validator: _model.addControllerValidator
+                                  .asValidator(context),
                             ),
                           ),
                         ],
@@ -280,8 +274,8 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                       },
                       text: 'Add',
                       options: FFButtonOptions(
-                        width: 200.0,
-                        height: 48.0,
+                        width: MediaQuery.sizeOf(context).width * 0.25,
+                        height: MediaQuery.sizeOf(context).height * 0.04,
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
@@ -291,6 +285,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  fontSize: 12.0,
                                 ),
                         elevation: 2.0,
                         borderRadius: BorderRadius.circular(24.0),
@@ -428,8 +423,8 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                       },
                       text: 'Withdraw',
                       options: FFButtonOptions(
-                        width: 200.0,
-                        height: 48.0,
+                        width: MediaQuery.sizeOf(context).width * 0.25,
+                        height: MediaQuery.sizeOf(context).height * 0.04,
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
@@ -439,6 +434,7 @@ class _SavingsWidgetState extends State<SavingsWidget> {
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  fontSize: 12.0,
                                 ),
                         elevation: 2.0,
                         borderRadius: BorderRadius.circular(24.0),

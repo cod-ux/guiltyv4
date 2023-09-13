@@ -159,7 +159,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: Color(0xFFF7FAFF),
+                                  color: columnAccountRecord!.dayBalance < 0.0
+                                      ? Color(0xFFE70C0C)
+                                      : Color(0xFFE9E9E9),
                                   fontSize: 50.0,
                                 ),
                           ),
