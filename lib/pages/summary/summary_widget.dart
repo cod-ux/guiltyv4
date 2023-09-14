@@ -226,7 +226,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                       child: Text(
                                         formatNumber(
                                           functions.timeleftdays(
-                                              summaryAccountRecord?.startDate,
+                                              getCurrentTimestamp,
                                               summaryAccountRecord?.endDate),
                                           formatType: FormatType.custom,
                                           format: '# Days',
