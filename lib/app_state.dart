@@ -22,12 +22,6 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _Imgset = prefs.getStringList('ff_Imgset') ?? _Imgset;
     });
-    _safeInit(() {
-      _Thismonth = prefs.getString('ff_Thismonth') ?? _Thismonth;
-    });
-    _safeInit(() {
-      _Today = prefs.getString('ff_Today') ?? _Today;
-    });
   }
 
   void update(VoidCallback callback) {
@@ -70,20 +64,6 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInImgset(int _index, String _value) {
     _Imgset.insert(_index, _value);
     prefs.setStringList('ff_Imgset', _Imgset);
-  }
-
-  String _Thismonth = 'This Month';
-  String get Thismonth => _Thismonth;
-  set Thismonth(String _value) {
-    _Thismonth = _value;
-    prefs.setString('ff_Thismonth', _value);
-  }
-
-  String _Today = 'Today';
-  String get Today => _Today;
-  set Today(String _value) {
-    _Today = _value;
-    prefs.setString('ff_Today', _value);
   }
 }
 
