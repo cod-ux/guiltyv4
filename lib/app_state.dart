@@ -36,12 +36,12 @@ class FFAppState extends ChangeNotifier {
     'https://cdn.acidcow.com/pics/20210802/1627922969_vy4bbog3kc.jpg',
     'https://cdn.acidcow.com/pics/20210802/1627923004_qstu2z2814.jpg',
     'https://cdn.acidcow.com/pics/20210802/1627922973_ab67ovnv0i.jpg',
-    'https://picsum.photos/seed/953/600',
-    'https://picsum.photos/seed/301/600',
-    'https://picsum.photos/seed/686/600',
-    'https://picsum.photos/seed/214/600',
-    'https://picsum.photos/seed/17/600',
-    'https://picsum.photos/seed/195/600'
+    'https://cdn.acidcow.com/pics/20210802/1627922998_424zqzz8t4.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627923040_1043yikgtl.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627923003_4d3l3lhx5h.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627922965_ir10chuyzz.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627922982_p3b1r2kut7.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627922987_2kfn1dti4a.jpg'
   ];
   List<String> get Imgset => _Imgset;
   set Imgset(List<String> _value) {
