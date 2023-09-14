@@ -20,11 +20,16 @@ int? timelefthrs() {
   return timeLeft.inHours;
 }
 
-int? timeleftdays(DateTime? startdate) {
-  // Get the integer difference between today and 30 days after an input date
-  DateTime? endDate = startdate?.add(Duration(days: 30));
-  if (endDate != null) {
-    Duration timeLeft = endDate.difference(DateTime.now());
+int? timeleftdays(
+  DateTime? startdate,
+  DateTime? enddate,
+) {
+  // get the difference between start date and end date
+// Get the number of days left between start date and end date
+  if (startdate != null && enddate != null) {
+    DateTime start = DateTime(startdate.year, startdate.month, startdate.day);
+    DateTime end = DateTime(enddate.year, enddate.month, enddate.day);
+    Duration timeLeft = end.difference(start);
     return timeLeft.inDays;
   }
   return null;

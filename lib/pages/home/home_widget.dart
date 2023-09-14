@@ -422,13 +422,22 @@ class _HomeWidgetState extends State<HomeWidget> {
                           borderRadius: BorderRadius.circular(17.0),
                           shape: BoxShape.rectangle,
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.network(
-                            FFAppState()
-                                .Imgset[random_data.randomInteger(0, 6)],
-                            width: 280.0,
-                            fit: BoxFit.contain,
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 4.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.network(
+                              FFAppState()
+                                  .Imgset[random_data.randomInteger(0, 6)],
+                              width: 280.0,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),
