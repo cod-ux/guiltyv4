@@ -37,16 +37,7 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  List<String> _Imgset = [
-    'https://sheownsit.com/wp-content/uploads/2016/05/2-money-meme.jpg',
-    'https://i.pinimg.com/originals/bd/8c/ee/bd8cee67f8338847e3b25c04cb6855b2.jpg',
-    'https://www.mindcorp.co.uk/wp-content/uploads/2021/03/Budget-Meme_2-days.jpg',
-    'https://media.makeameme.org/created/what-is-this-qs0qbz.jpg',
-    'https://tvgag.com/content/quotes/2188-jpg.jpg',
-    'https://i.imgflip.com/1zhk11.jpg',
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.tc-zDVrC699xa-8AzgboQQHaIf%26pid%3DApi&f=1&ipt=eee89af7f182b7ba95af5dca730c579e7670a21dbdc1466450cf4acfd95d0e3f&ipo=images',
-    'https://www.theloadedpig.com/wp-content/uploads/2020/09/Student-Loans-Meme-Personal-Finance-101-The-Loaded-Pig.png'
-  ];
+  List<String> _Imgset = [];
   List<String> get Imgset => _Imgset;
   set Imgset(List<String> _value) {
     _Imgset = _value;
