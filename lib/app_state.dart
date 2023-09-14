@@ -31,7 +31,18 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  List<String> _Imgset = [];
+  List<String> _Imgset = [
+    'https://cdn.acidcow.com/pics/20210802/1627922968_uwss751m6o.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627922969_vy4bbog3kc.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627923004_qstu2z2814.jpg',
+    'https://cdn.acidcow.com/pics/20210802/1627922973_ab67ovnv0i.jpg',
+    'https://picsum.photos/seed/953/600',
+    'https://picsum.photos/seed/301/600',
+    'https://picsum.photos/seed/686/600',
+    'https://picsum.photos/seed/214/600',
+    'https://picsum.photos/seed/17/600',
+    'https://picsum.photos/seed/195/600'
+  ];
   List<String> get Imgset => _Imgset;
   set Imgset(List<String> _value) {
     _Imgset = _value;
