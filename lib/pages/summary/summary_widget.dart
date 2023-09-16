@@ -190,7 +190,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              fontSize: 19.0,
+                                              fontSize: 27.0,
                                             ),
                                       ),
                                     ),
@@ -207,7 +207,11 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                           Text(
                                             'left for ',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 15.0,
+                                                ),
                                           ),
                                           Text(
                                             formatNumber(
@@ -227,7 +231,8 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .success,
-                                                  fontSize: 15.0,
+                                                  fontSize: 17.0,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
                                           ),
                                         ],

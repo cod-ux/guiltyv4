@@ -264,9 +264,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             homeAccountRecord?.savings)!,
                                         options: FFButtonOptions(
                                           width: 150.0,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              1.0,
+                                          height: 100.0,
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
