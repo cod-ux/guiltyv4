@@ -137,7 +137,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
-                              width: 174.0,
+                              width: MediaQuery.sizeOf(context).width * 0.55,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -158,7 +158,20 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          7.5, 7.5, 7.5, 7.5),
+                                          0.0, 10.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Monthly Budget',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 22.0,
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 2.0, 8.0, 0.0),
                                       child: Text(
                                         formatNumber(
                                           functions.budgetleft(
@@ -177,80 +190,47 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              fontSize: 25.0,
+                                              fontSize: 19.0,
                                             ),
                                       ),
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 5.0, 5.0, 5.0),
-                                      child: Text(
-                                        'left in your monthly budget',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: 174.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                elevation: 4.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          7.5, 7.5, 7.5, 7.5),
-                                      child: Text(
-                                        formatNumber(
-                                          functions.timeleftdays(
-                                              getCurrentTimestamp,
-                                              summaryAccountRecord?.endDate),
-                                          formatType: FormatType.custom,
-                                          format: '# Days',
-                                          locale: '',
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              fontSize: 25.0,
+                                          6.0, 6.0, 6.0, 6.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'left for ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                          Text(
+                                            formatNumber(
+                                              functions.timeleftdays(
+                                                  getCurrentTimestamp,
+                                                  summaryAccountRecord
+                                                      ?.endDate),
+                                              formatType: FormatType.custom,
+                                              format: '# Days',
+                                              locale: '',
                                             ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 5.0, 5.0, 5.0),
-                                      child: Text(
-                                        'left for period to end\n',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .success,
+                                                  fontSize: 15.0,
+                                                ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -426,7 +406,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                       ),
                     ),
                   ),
-                  Spacer(flex: 4),
+                  Spacer(flex: 12),
                 ],
               ),
             ),
