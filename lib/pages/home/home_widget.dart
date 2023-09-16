@@ -7,7 +7,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +35,20 @@ class _HomeWidgetState extends State<HomeWidget> {
     super.initState();
     _model = createModel(context, () => HomeModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.accountdocout = await queryAccountRecordOnce(
+        parent: currentUserReference,
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      if (_model.accountdocout?.accessToken == null ||
+          _model.accountdocout?.accessToken == '') {
+        context.pushNamed('onboarding');
+      } else {
+        return;
+      }
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -46,42 +63,44 @@ class _HomeWidgetState extends State<HomeWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Color(0xFF0E0E0E),
-        body: SafeArea(
-          top: true,
-          child: StreamBuilder<List<AccountRecord>>(
-            stream: queryAccountRecord(
-              parent: currentUserReference,
-              singleRecord: true,
+    return StreamBuilder<List<AccountRecord>>(
+      stream: queryAccountRecord(
+        parent: currentUserReference,
+        singleRecord: true,
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: Color(0xFF0E0E0E),
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: SpinKitFoldingCube(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 40.0,
+                ),
+              ),
             ),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
-                  ),
-                );
-              }
-              List<AccountRecord> columnAccountRecordList = snapshot.data!;
-              // Return an empty Container when the item does not exist.
-              if (snapshot.data!.isEmpty) {
-                return Container();
-              }
-              final columnAccountRecord = columnAccountRecordList.isNotEmpty
-                  ? columnAccountRecordList.first
-                  : null;
-              return Column(
+          );
+        }
+        List<AccountRecord> homeAccountRecordList = snapshot.data!;
+        // Return an empty Container when the item does not exist.
+        if (snapshot.data!.isEmpty) {
+          return Container();
+        }
+        final homeAccountRecord = homeAccountRecordList.isNotEmpty
+            ? homeAccountRecordList.first
+            : null;
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: Color(0xFF0E0E0E),
+            body: SafeArea(
+              top: true,
+              child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Row(
@@ -151,15 +170,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                           alignment: AlignmentDirectional(0.00, -1.00),
                           child: Text(
                             valueOrDefault<String>(
-                              functions.numberformat(
-                                  columnAccountRecord?.dayBalance),
+                              functions
+                                  .numberformat(homeAccountRecord?.dayBalance),
                               'Null',
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: columnAccountRecord!.dayBalance < 0.0
+                                  color: homeAccountRecord!.dayBalance < 0.0
                                       ? Color(0xFFE70C0C)
                                       : Color(0xFFE9E9E9),
                                   fontSize: 50.0,
@@ -242,7 +261,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           context.pushNamed('savings');
                                         },
                                         text: functions.numberformat(
-                                            columnAccountRecord?.savings)!,
+                                            homeAccountRecord?.savings)!,
                                         options: FFButtonOptions(
                                           width: 150.0,
                                           height: MediaQuery.sizeOf(context)
@@ -328,10 +347,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         onPressed: () async {
                                           context.pushNamed('summary');
                                         },
-                                        text: valueOrDefault<String>(
-                                          columnAccountRecord?.runway,
-                                          'Null',
-                                        ),
+                                        text: homeAccountRecord!.runway,
                                         options: FFButtonOptions(
                                           width: 150.0,
                                           height: MediaQuery.sizeOf(context)
@@ -503,11 +519,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                   ),
                   Spacer(),
                 ],
-              );
-            },
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

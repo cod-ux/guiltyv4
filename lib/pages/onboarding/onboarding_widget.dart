@@ -1,14 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -31,42 +27,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OnboardingModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.createdoc = await ServerCallsGroup.createAccountCall.call(
-        userRef: currentUserReference?.id,
-      );
-      if ((_model.createdoc?.succeeded ?? true)) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Account Collection Created',
-              style: TextStyle(
-                color: FlutterFlowTheme.of(context).primaryText,
-              ),
-            ),
-            duration: Duration(milliseconds: 4000),
-            backgroundColor: FlutterFlowTheme.of(context).secondary,
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'There was an error creating records. Try again or after a while :)',
-              style: TextStyle(
-                color: FlutterFlowTheme.of(context).primaryText,
-              ),
-            ),
-            duration: Duration(milliseconds: 4000),
-            backgroundColor: FlutterFlowTheme.of(context).secondary,
-          ),
-        );
-
-        context.goNamed('authv');
-      }
-    });
 
     _model.textController1 ??= TextEditingController();
     _model.textController2 ??= TextEditingController();
@@ -306,68 +266,41 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      _model.acccountResult = await queryAccountRecordOnce(
-                        parent: currentUserReference,
-                        singleRecord: true,
-                      ).then((s) => s.firstOrNull);
-
-                      await _model.acccountResult!.reference
-                          .update(createAccountRecordData(
-                        monthlyBudget:
-                            double.tryParse(_model.textController1.text),
-                        tab: double.tryParse(_model.textController2.text),
-                        startDate: _model.datePicked,
-                      ));
-                      if (_model.acccountResult?.accessToken != null &&
-                          _model.acccountResult?.accessToken != '') {
-                        _model.refreshOutput =
-                            await ServerCallsGroup.refreshAccountCall.call(
-                          userRef: currentUserReference?.id,
-                        );
-                        if ((_model.refreshOutput?.succeeded ?? true)) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Balance successfully refreshed',
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).secondary,
-                            ),
-                          );
-
-                          context.pushNamed('Home');
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Balance could not be refreshed: Error in refreshing balance',
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).error,
-                            ),
-                          );
-                        }
-                      } else {
+                      _model.createdoc =
+                          await ServerCallsGroup.createAccountCall.call(
+                        userRef: currentUserReference?.id,
+                      );
+                      if ((_model.createdoc?.succeeded ?? true)) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Plaid access token is empty',
+                              'Account Collection Created',
                               style: TextStyle(
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ),
                             duration: Duration(milliseconds: 4000),
-                            backgroundColor: FlutterFlowTheme.of(context).error,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                          ),
+                        );
+
+                        context.pushNamed('Home');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              getJsonField(
+                                (_model.createdoc?.jsonBody ?? ''),
+                                r'''$.error''',
+                              ).toString(),
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
                           ),
                         );
                       }

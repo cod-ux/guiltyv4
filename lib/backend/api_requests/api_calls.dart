@@ -52,11 +52,17 @@ class RefreshAccountCall {
 
 class CreateAccountCall {
   Future<ApiCallResponse> call({
+    double? monthlyBudget,
+    double? tab,
+    String? startDate = '',
     String? userRef = '',
   }) {
     final ffApiRequestBody = '''
 {
-  "user_ref": "${userRef}"
+  "user_ref": "${userRef}",
+  "monthly_budget": ${monthlyBudget},
+  "tab": ${tab},
+  "start_date": "${startDate}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'create account',
