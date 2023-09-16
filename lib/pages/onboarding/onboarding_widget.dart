@@ -80,7 +80,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            context.pushNamed('settings');
+                            context.pushNamed('authv');
                           },
                         ),
                       ),
