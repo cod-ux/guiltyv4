@@ -1,4 +1,5 @@
 # Guilty - A minimalist's budget app
+*(Navigate to the flutterflow branch instead of the main branch to view the code)*
 
 A budgeting dashboard built for mobile with flutter for the front end and Python for the backend.
 
