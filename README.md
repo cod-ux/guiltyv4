@@ -15,3 +15,5 @@ Worked with startup mentors from the *[Who’s Fabio?*](https://www.whosfabio.co
 
 > *“You’ve done a really good job identifying struggles that we’ve noticed the in the market as well and building a value proposition”*
 >
+
+![IMG_9832.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/08aef2bc-b07e-43ef-b406-a01b0bb09ff5/36f5b2e9-d6cd-496e-8547-f2dc9e8aa4d1/IMG_9832.jpg)
